@@ -19,13 +19,15 @@ collections, ready for everything else to build on.
 
 **Tasks:**
 
-- Initialize the Astro project in the repo root (the repo currently holds
-  only the `context/` docs) with TypeScript strict and
-  `output: 'static'` in `astro.config.mjs`, per `architecture.md`.
+- Install Astro in the repo root (the repo currently holds only the
+  `context/` docs — there is no `package.json` yet) with JavaScript
+  (no TypeScript): `npm create astro@latest -- --template minimal`, then
+  set `output: 'static'` in `astro.config.mjs` per `architecture.md`.
 - Set `site` in `astro.config.mjs` to the production domain (final value
   confirmed in Phase 4 — a placeholder is fine here).
-- Create `src/content.config.ts` with the `projects` and `blog`
-  collections exactly as specified in `architecture.md`.
+- Create `src/content.config.js` (JavaScript, not `.ts`) with the
+  `projects` and `blog` collections exactly as specified in
+  `architecture.md` (Astro supports `.js` content config files).
 - Create `src/layouts/BaseLayout.astro` — `<html>`, `<head>`, shared nav,
   and the footer with the plain `mailto:` email link.
 - Create `src/styles/global.css` placeholder (CSS variables, reset, base
