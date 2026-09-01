@@ -1,37 +1,22 @@
-# Current Feature: Phase 1 — Design system & UI
+# Current Feature
+
+<!-- Feature name -->
 
 ## Status
 
-In Progress
+Not Started | Loaded | In Progress | Completed
 
 ## Goals
 
-- Run the self-contained design prompt from `context/phases.md` directly through command code to produce the design system.
-- Author the design tokens in `src/styles/global.css`: color palette, spacing scale, type scale (strong display face + monospace accents), border widths, hard-offset shadow tokens, focus states.
-- Build base component styles from those tokens only: buttons, cards, tags, links, nav, footer.
-- Apply the system to every page: hero/about, projects grid, project details, blog list, blog post, contact/footer.
-- Make it responsive — the brutalist borders and offset shadows must hold together down to phone widths.
-- Keep accessibility intact: sufficient contrast for the muted palette, visible focus outlines, and a clear pressed effect (shadow shift) on interactive elements.
-- Every page is styled from design tokens only — no hard-coded colors, border widths, or shadows scattered in component styles.
-- The home page looks intentional and consistent on a desktop browser and a phone-sized viewport, and the brutalist/minimalist fusion reads as a deliberate style, not a clash.
-- All links, buttons, and cards have visible hover/focus/pressed states.
-- `npm run build` passes.
+<!-- Placeholder: goals are populated by the `start` action when a feature begins. -->
 
 ## References
 
-- `context/features/phase-1-design-system-ui-spec.md`
-- `context/phases.md`
-- `context/architecture.md`
-- `context/coding-standards.md`
-- `context/git-conventions.md`
-- `context/docs/plans/how-feature-spec-made.md`
+<!-- Placeholder: references are populated by the `start` action when a feature begins. -->
 
 ## Notes
 
-- Preserve the project's non-negotiable constraints: vanilla HTML/CSS/JS only (no UI framework, no CSS framework, no utility classes, no extra npm packages), static Astro output, and no secrets in the repo. Styling lives in `src/styles/global.css` plus scoped `<style>` blocks in `.astro` components.
-- This phase touches no session/order data, but the five business rules in `AGENTS.md` remain in force for any future work; do not relax them here.
-- Expected git workflow: branch off an up-to-date `main` as `phase-1-design-system-ui`, commit with `[phase-1]` prefixes, merge only after the "done when" checklist passes, then tag the merge on `main` as `phase-1-complete`.
-- The design prompt is copy-paste ready and self-contained; it defines the exact deliverable for the tokens and their application.
+<!-- Placeholder: notes are populated by the `start` action when a feature begins. -->
 
 ## History
 
@@ -43,3 +28,12 @@ In Progress
   - `.gitignore` updated per `git-conventions.md`.
   - Verified: `npm run dev` serves home page; `npm run build` completes with no config/content collection errors.
   - Merged to `main` and tagged `phase-0-complete`.
+
+- **Phase 1 — Design system & UI** — Completed
+  - Authored brutalist × minimalist design tokens in `src/styles/global.css`: muted-warm palette, spacing/type scales, border widths, hard offset shadows, focus states.
+  - Brightened the palette with a signal blue action/identity color and amber moment/status color; wired in Space Grotesk, Inter, and JetBrains Mono via Google Fonts.
+  - Built base component styles (buttons, cards, tags, links, nav, footer) and reusable components: `ProjectCard`, `BlogPostCard`, `ProjectGallery`, `ExperienceItem`.
+  - Applied the system to the home page (hero/about, projects grid, experience), project detail, blog list, and blog post pages.
+  - Added one authored hero entrance (mark slide-in, name clip reveal, accent underline draw) plus fast hover/press feedback, respecting reduced-motion preferences.
+  - Made the layout responsive down to phone widths with intact brutalist borders and offset shadows.
+  - Verified: `npm run build` passes with no config/content collection errors (empty-content warnings are expected until Phase 2).
