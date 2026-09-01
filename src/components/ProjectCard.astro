@@ -1,0 +1,30 @@
+---
+const { project } = Astro.props;
+const { title, description, tags = [], status, liveUrl, repoUrl } = project.data;
+---
+
+<article class="card">
+  <h3 class="card__title">
+    <a href={`/projects/${project.id}`}>{title}</a>
+  </h3>
+  <p class="card__description">{description}</p>
+
+  <div class="card__meta">
+    {tags.map((tag) => <span class="tag">{tag}</span>)}
+    {status && <span class="tag tag--status">{status}</span>}
+  </div>
+
+  <div class="card__links cluster">
+    {liveUrl && (
+      <a class="button button--accent" href={liveUrl} target="_blank" rel="noopener">
+        Live
+      </a>
+    )}
+    {repoUrl && (
+      <a class="button" href={repoUrl} target="_blank" rel="noopener">
+        Code
+      </a>
+    )}
+    <a class="link-arrow" href={`/projects/${project.id}`}>Read case study →</a>
+  </div>
+</article>

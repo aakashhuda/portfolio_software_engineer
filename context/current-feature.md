@@ -28,3 +28,12 @@ Not Started | Loaded | In Progress | Completed
   - `.gitignore` updated per `git-conventions.md`.
   - Verified: `npm run dev` serves home page; `npm run build` completes with no config/content collection errors.
   - Merged to `main` and tagged `phase-0-complete`.
+
+- **Phase 1 — Design system & UI** — Completed
+  - Authored brutalist × minimalist design tokens in `src/styles/global.css`: muted-warm palette, spacing/type scales, border widths, hard offset shadows, focus states.
+  - Brightened the palette with a signal blue action/identity color and amber moment/status color; wired in Space Grotesk, Inter, and JetBrains Mono via Google Fonts.
+  - Built base component styles (buttons, cards, tags, links, nav, footer) and reusable components: `ProjectCard`, `BlogPostCard`, `ProjectGallery`, `ExperienceItem`.
+  - Applied the system to the home page (hero/about, projects grid, experience), project detail, blog list, and blog post pages.
+  - Added one authored hero entrance (mark slide-in, name clip reveal, accent underline draw) plus fast hover/press feedback, respecting reduced-motion preferences.
+  - Made the layout responsive down to phone widths with intact brutalist borders and offset shadows.
+  - Verified: `npm run build` passes with no config/content collection errors (empty-content warnings are expected until Phase 2).

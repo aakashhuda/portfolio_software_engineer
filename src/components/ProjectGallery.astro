@@ -1,0 +1,16 @@
+---
+const { images = [] } = Astro.props;
+---
+
+{
+  images.length > 0 && (
+    <div class="gallery">
+      {images.map((image) => (
+        <figure>
+          <img src={image.src} alt={image.alt} loading="lazy" />
+          {image.caption && <figcaption>{image.caption}</figcaption>}
+        </figure>
+      ))}
+    </div>
+  )
+}

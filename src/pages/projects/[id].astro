@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectGallery from '../../components/ProjectGallery.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -12,17 +13,35 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
+const { title, description, tags = [], liveUrl, repoUrl, images = [] } = project.data;
 ---
 
-<BaseLayout title={project.data.title}>
-  <h1>{project.data.title}</h1>
+<BaseLayout title={title}>
+  <article class="article site-shell section">
+    <h1>{title}</h1>
+    <p class="hero__lead">{description}</p>
 
-  <div class="links">
-    {project.data.liveUrl && <a href={project.data.liveUrl}>Live Demo</a>}
-    {project.data.repoUrl && <a href={project.data.repoUrl}>Source Code</a>}
-  </div>
+    <div class="cluster">
+      {tags.map((tag) => <span class="tag">{tag}</span>)}
+    </div>
 
-  <article>
-    <Content />
+    <div class="cluster">
+      {liveUrl && (
+        <a class="button button--accent" href={liveUrl} target="_blank" rel="noopener">
+          Live Demo
+        </a>
+      )}
+      {repoUrl && (
+        <a class="button" href={repoUrl} target="_blank" rel="noopener">
+          Source Code
+        </a>
+      )}
+    </div>
+
+    <ProjectGallery images={images} />
+
+    <div class="article__body">
+      <Content />
+    </div>
   </article>
 </BaseLayout>

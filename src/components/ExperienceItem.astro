@@ -1,0 +1,15 @@
+---
+const { role, company, dates, highlights = [] } = Astro.props;
+---
+
+<article class="experience-item">
+  <h3 class="experience-item__role">{role}</h3>
+  <p class="experience-item__meta">
+    {company} · {dates}
+  </p>
+  {highlights.length > 0 && (
+    <ul>
+      {highlights.map((highlight) => <li>{highlight}</li>)}
+    </ul>
+  )}
+</article>
