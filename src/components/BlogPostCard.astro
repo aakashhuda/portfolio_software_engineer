@@ -1,0 +1,22 @@
+---
+const { post } = Astro.props;
+const { title, description, date, tags = [] } = post.data;
+---
+
+<article class="card">
+  <p class="hero__eyebrow">
+    {date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+  </p>
+  <h3 class="card__title">
+    <a href={`/blog/${post.id}`}>{title}</a>
+  </h3>
+  <p class="card__description">{description}</p>
+
+  <div class="card__meta">
+    {tags.map((tag) => <span class="tag">{tag}</span>)}
+  </div>
+
+  <div class="card__links cluster">
+    <a class="link-arrow" href={`/blog/${post.id}`}>Read post →</a>
+  </div>
+</article>

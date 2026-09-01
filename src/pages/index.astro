@@ -1,8 +1,81 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ExperienceItem from '../components/ExperienceItem.astro';
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const experience = [
+  {
+    role: 'Software Engineer',
+    company: 'Ichiban Autos (WorkshopLogic)',
+    dates: '2024 — Present',
+    highlights: [
+      'Building and maintaining the WorkshopLogic platform.',
+      'Shipping features across the stack with Python, Django, and Vue.',
+    ],
+  },
+  {
+    role: 'Software Engineer',
+    company: 'EchoLogyx',
+    dates: '2022 — 2024',
+    highlights: [
+      'Built Ninety Percent and ELX ChatBot.',
+      'Delivered production systems for real clients.',
+    ],
+  },
+  {
+    role: 'Software Engineer',
+    company: 'SyncDots / InstaPrivat',
+    dates: '2021 — 2022',
+    highlights: [
+      'Contributed to SyncDots and InstaPrivat.',
+      'Worked on integrations and platform features.',
+    ],
+  },
+];
 ---
 
 <BaseLayout title="Home">
-  <h1>Placeholder home page</h1>
-  <p>Hero, about, and projects grid land here in later phases.</p>
+  <section class="hero site-shell" id="about">
+    <p class="hero__eyebrow">Software Engineer · Agentic Development</p>
+    <h1 class="hero__name">Syed Mahbubul Huda</h1>
+    <p class="hero__lead">
+      I build fast, pragmatic software across the stack — Python, Django,
+      FastAPI, Vue, Nuxt, and Astro. Five years shipping real products, with a
+      current focus on agentic development.
+    </p>
+    <div class="cluster">
+      <a class="button button--accent" href="#projects">View projects</a>
+      <a class="button" href="https://github.com/aakashhuda" target="_blank" rel="noopener">
+        GitHub
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="site-shell">
+      <h2>Projects</h2>
+      {projects.length > 0 ? (
+        <div class="grid grid-cards">
+          {projects.map((project) => <ProjectCard project={project} />)}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <p>Project case studies land here in Phase 2.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="site-shell stack">
+      <h2>Experience</h2>
+      <div class="stack">
+        {experience.map((item) => <ExperienceItem {...item} />)}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
