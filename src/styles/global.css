@@ -260,6 +260,10 @@ a:hover {
   transform: scaleX(1);
 }
 
+.card .meta {
+  margin-bottom: var(--space-3);
+}
+
 .card__title {
   font-family: var(--font-display);
   font-size: var(--text-lg);
