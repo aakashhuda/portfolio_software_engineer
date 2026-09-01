@@ -101,6 +101,7 @@ h4 {
 
 h1 {
   font-size: clamp(var(--text-3xl), 8vw, var(--text-4xl));
+  margin: 18px 0;
 }
 
 h2 {
@@ -144,6 +145,32 @@ a:hover {
   outline-offset: var(--focus-offset);
 }
 
+/* ---------- Skip link ---------- */
+
+.skip-link {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 100;
+  padding: var(--space-3) var(--space-5);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: var(--border-thick) solid var(--color-ink);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-150%);
+  transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 /* ---------- Layout primitives ---------- */
 
 .site-shell {
@@ -165,6 +192,7 @@ a:hover {
   flex-wrap: wrap;
   gap: var(--space-3);
   align-items: center;
+  margin: 18px 0;
 }
 
 .grid {
@@ -475,17 +503,6 @@ a:hover {
   background: var(--color-surface);
   border: var(--border-thin) solid var(--color-ink);
   box-shadow: var(--shadow-sm);
-  position: relative;
-}
-
-.experience-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 0.5rem;
-  background: var(--color-accent);
 }
 
 .experience-item__role {

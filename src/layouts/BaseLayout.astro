@@ -28,6 +28,8 @@ const email = 'mahbub@example.com';
     <title>{title === siteTitle ? title : `${title} — ${siteTitle}`}</title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <header class="site-header">
       <div class="site-header__inner site-shell">
         <a class="brand" href="/">SMH<span aria-hidden="true">.</span>dev</a>
@@ -45,7 +47,7 @@ const email = 'mahbub@example.com';
       </div>
     </header>
 
-    <main>
+    <main id="main-content">
       <slot />
     </main>
 
@@ -63,6 +65,7 @@ const email = 'mahbub@example.com';
       toggle?.addEventListener('click', () => {
         const isOpen = nav?.classList.toggle('is-open');
         toggle.setAttribute('aria-expanded', String(Boolean(isOpen)));
+        toggle.textContent = isOpen ? 'Close' : 'Menu';
       });
     </script>
   </body>
