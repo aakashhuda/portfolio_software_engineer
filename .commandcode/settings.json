@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(git:*)",
+      "Shell(cat > 'src/pages/projects/[id].astro' <<'EOF' --- import { getCollection, render } from 'astro:content'; import BaseLayout from '../../layouts/BaseLayout.astro'; import ProjectGallery from '../../components/ProjectGallery.astro'; export async function getStaticPaths() { const projects = await getCollection('projects'); return projects.map((project) => ({ params: { id: project.id }, props: { project }, })); } const { project } = Astro.props; const { Content } = await render(project); const { title, description, tags = [], liveUrl, repoUrl, images = [] } = project.data; --- <BaseLayout title={title}> <article class=\"article site-shell section\"> <p class=\"hero__eyebrow\">Project</p> <h1>{title}</h1> <p class=\"hero__lead\">{description}</p> <div class=\"cluster\"> {tags.map((tag) => <span class=\"tag\">{tag}</span>)} </div> <div class=\"cluster\"> {liveUrl && ( <a class=\"button button--accent\" href={liveUrl} target=\"_blank\" rel=\"noopener\"> Live Demo </a> )} {repoUrl && ( <a class=\"button\" href={repoUrl} target=\"_blank\" rel=\"noopener\"> Source Code </a> )} </div> <ProjectGallery images={images} /> <div class=\"article__body\"> <Content /> </div> </article> </BaseLayout> EOF cat > 'src/pages/blog/[id].astro' <<'EOF' --- import { getCollection, render } from 'astro:content'; import BaseLayout from '../../layouts/BaseLayout.astro'; export async function getStaticPaths() { const posts = await getCollection('blog', ({ data }) => !data.draft); return posts.map((post) => ({ params: { id: post.id }, props: { post }, })); } const { post } = Astro.props; const { Content } = await render(post); const { title, description, date, tags = [] } = post.data; --- <BaseLayout title={title}> <article class=\"article site-shell section\"> <p class=\"hero__eyebrow\"> {date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })} </p> <h1>{title}</h1> <p class=\"hero__lead\">{description}</p> <div class=\"cluster\"> {tags.map((tag) => <span class=\"tag\">{tag}</span>)} </div> <div class=\"article__body\"> <Content /> </div> </article> </BaseLayout> EOF echo 'done')",
+      "Shell(npm:*)",
+      "Shell(git status --short; echo '---gitignore---'; cat .gitignore 2>/dev/null; echo '---skill scripts---'; ls -la /home/mahbub/Projects/portfolio_software_engineer/.commandcode/skills/impeccable/scripts/ 2>/dev/null; echo '---reference---'; ls /home/mahbub/Projects/portfolio_software_engineer/.commandcode/skills/impeccable/reference/ 2>/dev/null)",
+      "Shell(node .commandcode/skills/impeccable/scripts/context.mjs --target src/pages/index.astro 2>&1)",
+      "Shell(node .commandcode/skills/impeccable/scripts/detect.mjs --json src/styles/global.css src/layouts/BaseLayout.astro src/pages/index.astro src/components 2>&1)",
+      "Shell(agent-browser:*)",
+      "Shell(which chromium chromium-browser google-chrome google-chrome-stable chrome 2>/dev/null; echo '---'; which playwright puppeteer 2>/dev/null; echo '---node modules---'; ls node_modules/.bin 2>/dev/null | grep -iE 'playwright|puppeteer|chrome' || echo 'none')",
+      "Shell(curl -s http://localhost:4321/)",
+      "Shell(grep:*)",
+      "Shell(git add context/current-feature.md && git commit -F - <<'EOF' chore: reset current-feature.md and add history after completing Phase 1 EOF)"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}
