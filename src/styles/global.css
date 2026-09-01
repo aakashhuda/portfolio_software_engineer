@@ -1,19 +1,23 @@
 /* ============================================================
-   Design system — Brutalism × Minimalism
-   Soft, muted, minimalist palette on a hard-edged brutalist frame.
+   Design system — Brutalism × Minimalism (brightened)
+   Hard-edged brutalist frame on a soft, warm, brighter canvas.
+   Signal blue owns action and identity; warm amber marks moments.
    ============================================================ */
 
 :root {
   /* Palette */
-  --color-bg: #f5f1e8;
-  --color-surface: #fbf8f1;
-  --color-ink: #111111;
-  --color-muted: #6b625a;
-  --color-accent: #b7a99a;
-  --color-accent-soft: #d8cdbf;
-  --color-line: #111111;
-  --color-success: #5f6d54;
-  --color-warning: #a17a4b;
+  --color-bg: #fbf6ec;
+  --color-surface: #fffdf6;
+  --color-ink: #0e0e0e;
+  --color-muted: #5c544a;
+  --color-accent: #2b46ff;
+  --color-accent-strong: #1d33cc;
+  --color-accent-soft: #d9ddff;
+  --color-signal: #ff6a1a;
+  --color-signal-soft: #ffe1cc;
+  --color-line: #0e0e0e;
+  --color-success: #3f7a4f;
+  --color-warning: #c96a1e;
 
   /* Spacing scale */
   --space-1: 0.25rem;
@@ -45,19 +49,19 @@
   --border-thin: 2px;
   --border-thick: 3px;
 
-  /* Hard offset shadows */
+  /* Hard offset shadows (earned by the brutalist brief) */
   --shadow-sm: 4px 4px 0 0 var(--color-ink);
   --shadow-md: 6px 6px 0 0 var(--color-ink);
   --shadow-lg: 10px 10px 0 0 var(--color-ink);
+  --shadow-accent: 6px 6px 0 0 var(--color-signal);
 
   /* Focus */
-  --focus-ring: 3px solid var(--color-warning);
+  --focus-ring: 3px solid var(--color-accent);
   --focus-offset: 3px;
 
   /* Layout */
   --max-width: 72rem;
   --gutter: clamp(1rem, 4vw, 2.5rem);
-  --radius: 0;
 }
 
 *,
@@ -96,7 +100,7 @@ h4 {
 }
 
 h1 {
-  font-size: var(--text-4xl);
+  font-size: clamp(var(--text-3xl), 8vw, var(--text-4xl));
 }
 
 h2 {
@@ -172,6 +176,15 @@ a:hover {
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
 }
 
+/* ---------- Meta / dates ---------- */
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
+}
+
 /* ---------- Buttons ---------- */
 
 .button {
@@ -190,7 +203,7 @@ a:hover {
   border: var(--border-thick) solid var(--color-ink);
   box-shadow: var(--shadow-sm);
   cursor: pointer;
-  transition: transform 120ms ease, box-shadow 120ms ease;
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
 }
 
 .button:hover {
@@ -204,7 +217,12 @@ a:hover {
 }
 
 .button--accent {
-  background: var(--color-accent-soft);
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+.button--accent:hover {
+  background: var(--color-accent-strong);
 }
 
 /* ---------- Cards ---------- */
@@ -216,7 +234,21 @@ a:hover {
   border: var(--border-thick) solid var(--color-ink);
   box-shadow: var(--shadow-sm);
   padding: var(--space-5);
+  position: relative;
   transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--border-thick);
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
 }
 
 .card:hover {
@@ -224,11 +256,19 @@ a:hover {
   transform: translate(-2px, -2px);
 }
 
+.card:hover::before {
+  transform: scaleX(1);
+}
+
 .card__title {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   line-height: 1.2;
   margin-bottom: var(--space-3);
+}
+
+.card__title a:hover {
+  color: var(--color-accent);
 }
 
 .card__description {
@@ -242,6 +282,14 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
 }
 
 /* ---------- Tags ---------- */
@@ -256,12 +304,25 @@ a:hover {
   border: var(--border-thin) solid var(--color-ink);
 }
 
+.tag--status {
+  background: var(--color-signal-soft);
+}
+
+.tag--featured {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
 /* ---------- Links ---------- */
 
 .link-arrow {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   font-weight: 600;
+}
+
+.link-arrow:hover {
+  color: var(--color-accent);
 }
 
 /* ---------- Header / Nav ---------- */
@@ -287,6 +348,10 @@ a:hover {
   letter-spacing: -0.01em;
 }
 
+.brand span {
+  color: var(--color-accent);
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -300,11 +365,13 @@ a:hover {
   text-decoration: none;
   padding: var(--space-2) var(--space-3);
   border: var(--border-thin) solid transparent;
+  transition: border-color 120ms ease, background-color 120ms ease, color 120ms ease;
 }
 
 .nav__link:hover {
   border-color: var(--color-ink);
   background: var(--color-accent-soft);
+  color: var(--color-accent-strong);
 }
 
 .nav__toggle {
@@ -343,29 +410,56 @@ a:hover {
   text-underline-offset: 3px;
 }
 
+.site-footer .mailto:hover {
+  color: var(--color-accent);
+}
+
 /* ---------- Hero / About ---------- */
 
 .hero {
-  padding-block: var(--space-9) var(--space-8);
   display: grid;
+  grid-template-columns: auto 1fr;
   gap: var(--space-6);
+  align-items: start;
+  padding-block: var(--space-9) var(--space-8);
 }
 
-.hero__eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-muted);
+.hero__mark {
+  width: clamp(4rem, 10vw, 7rem);
+  height: clamp(4rem, 10vw, 7rem);
+  background: var(--color-accent);
+  box-shadow: var(--shadow-accent);
+  border: var(--border-thick) solid var(--color-ink);
+  animation: mark-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero__name {
-  font-size: clamp(var(--text-3xl), 8vw, var(--text-4xl));
+  animation: name-reveal 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  position: relative;
+  display: inline-block;
+}
+
+.hero__name::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.1em;
+  width: 100%;
+  height: 0.14em;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: draw-accent 600ms 250ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero__lead {
   font-size: var(--text-lg);
   max-width: 44rem;
+  animation: rise-in 600ms 150ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero__actions {
+  animation: rise-in 600ms 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* ---------- Experience ---------- */
@@ -377,6 +471,17 @@ a:hover {
   background: var(--color-surface);
   border: var(--border-thin) solid var(--color-ink);
   box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.experience-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0.5rem;
+  background: var(--color-accent);
 }
 
 .experience-item__role {
@@ -390,10 +495,19 @@ a:hover {
   color: var(--color-muted);
 }
 
+.experience-item ul {
+  padding-left: var(--space-5);
+  color: var(--color-muted);
+}
+
 /* ---------- Project / blog detail ---------- */
 
 .article {
   max-width: 48rem;
+}
+
+.article h1 {
+  margin-bottom: var(--space-4);
 }
 
 .article h2,
@@ -401,11 +515,6 @@ a:hover {
   margin-top: var(--space-7);
   margin-bottom: var(--space-4);
   border-bottom: none;
-}
-
-.article p,
-.article li {
-  color: var(--color-ink);
 }
 
 .article ul,
@@ -483,18 +592,55 @@ a:hover {
   color: var(--color-muted);
 }
 
+/* ---------- Authored motion ---------- */
+
+@keyframes name-reveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(0.35em);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.6em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes mark-in {
+  from {
+    opacity: 0;
+    transform: translate(-0.5em, -0.5em) rotate(-2deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes draw-accent {
+  to {
+    transform: scaleX(1);
+  }
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 640px) {
   :root {
-    --border-thin: 2px;
     --shadow-sm: 3px 3px 0 0 var(--color-ink);
     --shadow-md: 4px 4px 0 0 var(--color-ink);
     --shadow-lg: 6px 6px 0 0 var(--color-ink);
-  }
-
-  h1 {
-    font-size: var(--text-3xl);
+    --shadow-accent: 4px 4px 0 0 var(--color-signal);
   }
 
   h2 {
@@ -503,6 +649,10 @@ a:hover {
 
   .section {
     padding-block: var(--space-6);
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
   }
 
   .site-header__inner {
@@ -522,5 +672,18 @@ a:hover {
 
   .nav__toggle {
     display: inline-flex;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
