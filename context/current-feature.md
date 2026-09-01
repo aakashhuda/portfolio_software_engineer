@@ -37,3 +37,10 @@ Not Started | Loaded | In Progress | Completed
   - Added one authored hero entrance (mark slide-in, name clip reveal, accent underline draw) plus fast hover/press feedback, respecting reduced-motion preferences.
   - Made the layout responsive down to phone widths with intact brutalist borders and offset shadows.
   - Verified: `npm run build` passes with no config/content collection errors (empty-content warnings are expected until Phase 2).
+
+- **Phase 2 — Project & blog content** — Completed
+  - Wrote depth-first Markdown case studies for all six projects from `project-overview.md` (SyncDots, InstaPrivat, EchoLogyx, ELX ChatBot, WorkshopLogic, Ninety Percent), grounded in each product's live site.
+  - Wrote three blog posts matching the site's voice (agentic development, vanilla Astro, vertical SaaS lessons).
+  - Marked WorkshopLogic `in-progress` to reflect ongoing work.
+  - Verified: `npm run build` passes and generates all project and blog routes with no schema errors.
+  - Merged to `main` and tagged `phase-2-complete`.
