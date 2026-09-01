@@ -105,10 +105,21 @@ h1 {
 }
 
 h2 {
+  position: relative;
   font-size: var(--text-2xl);
-  border-bottom: var(--border-thick) solid var(--color-ink);
   padding-bottom: var(--space-3);
   margin-bottom: var(--space-6);
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--border-thick);
+  background: var(--color-ink);
+  transform-origin: left;
 }
 
 h3 {
@@ -253,6 +264,45 @@ a:hover {
   background: var(--color-accent-strong);
 }
 
+/* ---------- Back link ---------- */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-thin) solid var(--color-ink);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+
+.back-link__arrow {
+  font-size: var(--text-base);
+  line-height: 1;
+  color: var(--color-accent-strong);
+  transition: transform 120ms ease;
+}
+
+.back-link:hover {
+  box-shadow: var(--shadow-md);
+  transform: translate(-2px, -2px);
+  background: var(--color-accent-soft);
+}
+
+.back-link:hover .back-link__arrow {
+  transform: translateX(-3px);
+}
+
+.back-link:active {
+  box-shadow: 0 0 0 0 var(--color-ink);
+  transform: translate(4px, 4px);
+}
+
 /* ---------- Cards ---------- */
 
 .card {
@@ -373,6 +423,9 @@ a:hover {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
   font-family: var(--font-display);
   font-size: var(--text-md);
   font-weight: 700;
@@ -380,7 +433,14 @@ a:hover {
   letter-spacing: -0.01em;
 }
 
-.brand span {
+.brand__mark {
+  display: block;
+  width: 30px;
+  height: 30px;
+  flex: none;
+}
+
+.brand__dot {
   color: var(--color-accent);
 }
 
@@ -498,11 +558,41 @@ a:hover {
 
 .experience-item {
   display: grid;
-  gap: var(--space-2);
+  gap: var(--space-4);
   padding: var(--space-5);
   background: var(--color-surface);
   border: var(--border-thin) solid var(--color-ink);
   box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.experience-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--border-thick);
+  background: var(--color-accent);
+}
+
+.experience-item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
+}
+
+.experience-item--signal::before {
+  background: var(--color-signal);
+}
+
+.experience-item--success::before {
+  background: var(--color-success);
+}
+
+.experience-item__head {
+  display: grid;
+  gap: var(--space-1);
 }
 
 .experience-item__role {
@@ -514,17 +604,69 @@ a:hover {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--color-muted);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
 }
 
-.experience-item ul {
+.experience-item__meta a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+.experience-item__meta a:hover {
+  color: var(--color-accent-strong);
+}
+
+.experience-item__sep {
+  color: var(--color-muted);
+  opacity: 0.7;
+}
+
+.experience-item__focus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.experience-item--signal .experience-item__focus .tag {
+  background: var(--color-signal-soft);
+}
+
+.experience-item--success .experience-item__focus .tag {
+  background: #dceadc;
+}
+
+.experience-item__highlights {
   padding-left: var(--space-5);
   color: var(--color-muted);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.experience-item__highlights li::marker {
+  color: var(--color-accent);
+}
+
+.experience-item--signal .experience-item__highlights li::marker {
+  color: var(--color-signal);
+}
+
+.experience-item--success .experience-item__highlights li::marker {
+  color: var(--color-success);
 }
 
 /* ---------- Project / blog detail ---------- */
 
 .article {
   max-width: 48rem;
+}
+
+.article__back {
+  margin-bottom: var(--space-6);
 }
 
 .article h1 {
@@ -535,7 +677,11 @@ a:hover {
 .article h3 {
   margin-top: var(--space-7);
   margin-bottom: var(--space-4);
-  border-bottom: none;
+}
+
+.article h2::after,
+.article h3::after {
+  display: none;
 }
 
 .article ul,
@@ -651,6 +797,135 @@ a:hover {
 @keyframes draw-accent {
   to {
     transform: scaleX(1);
+  }
+}
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@keyframes reveal-line {
+  from {
+    opacity: 0;
+    clip-path: inset(60% 0 0 0);
+    transform: translateY(0.35em);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+
+@keyframes reveal-frame {
+  from {
+    opacity: 0;
+    transform: translate(6px, 6px);
+    box-shadow: 0 0 0 0 var(--color-ink);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+@keyframes reveal-bar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- Scroll reveal (progressive enhancement) ----------
+   Thesis: "structure draws itself." A heading's hard underline leads,
+   then content rises and its offset shadow snaps into place. */
+
+/* Hidden only when JS is present; a no-JS or failed-script visitor
+   still sees everything. Animations fill backwards so the delay shows
+   the hidden pose, then end without locking transform/box-shadow so
+   hover states keep working after the reveal. */
+.js .reveal {
+  opacity: 0;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  animation: reveal-rise 520ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 80ms);
+}
+
+.js .reveal--line.is-visible {
+  animation-name: reveal-line;
+}
+
+.js .reveal--frame.is-visible {
+  animation-name: reveal-frame;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+
+/* The colored role bar draws ahead of its item content. */
+.js .experience-item::before {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.js .experience-item.is-visible::before {
+  transform: scaleX(1);
+  animation: reveal-bar 380ms 60ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal,
+  .js .reveal.is-visible,
+  .js .experience-item::before,
+  .js .experience-item.is-visible::before {
+    opacity: 1 !important;
+    animation: none !important;
+    animation-delay: 0ms !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    box-shadow: var(--shadow-sm) !important;
+  }
+}
+
+/* ---------- View transition continuity ---------- */
+
+::view-transition-old(root) {
+  animation: vt-out 220ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+::view-transition-new(root) {
+  animation: vt-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+}
+
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 

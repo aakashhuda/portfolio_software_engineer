@@ -10,29 +10,44 @@ const projects = (await getCollection('projects'))
 const experience = [
   {
     role: 'Software Engineer',
-    company: 'Ichiban Autos (WorkshopLogic)',
+    company: 'Ichiban Autos — WorkshopLogic',
     dates: '2024 — Present',
+    location: 'Remote',
+    url: 'https://www.workshoplogic.com/',
+    tone: 'accent',
+    focus: ['Django', 'Vue', 'PostgreSQL', 'Xero', 'Supplier APIs'],
     highlights: [
-      'Building and maintaining the WorkshopLogic platform.',
-      'Shipping features across the stack with Python, Django, and Vue.',
+      'Shipping full-stack features for a vertical SaaS used by auto-repair workshops.',
+      'Owning invoice correctness — license-plate lookups, OCR, and barcode scans feeding one ledger.',
+      'Integrating Xero and supplier systems so the tool fits existing shop workflows.',
     ],
   },
   {
     role: 'Software Engineer',
     company: 'EchoLogyx',
     dates: '2022 — 2024',
+    location: 'Remote',
+    url: 'https://www.echologyx.com/',
+    tone: 'signal',
+    focus: ['Shopify', 'A/B Testing', 'VWO', 'Convert', 'QA'],
     highlights: [
-      'Built Ninety Percent and ELX ChatBot.',
-      'Delivered production systems for real clients.',
+      'Built Ninety Percent and ELX ChatBot alongside the client engineering team.',
+      'Shipped A/B tests on live, high-traffic storefronts — isolated, rollback-safe, reviewable.',
+      'Learned to treat experiment velocity as a reliability problem, not just a conversion one.',
     ],
   },
   {
     role: 'Software Engineer',
-    company: 'SyncDots / InstaPrivat',
+    company: 'SyncDots & InstaPrivat',
     dates: '2021 — 2022',
+    location: 'Remote',
+    url: 'https://syncdots.id/',
+    tone: 'success',
+    focus: ['Python', 'WhatsApp API', 'Automation', 'CRM', 'Lead Gen'],
     highlights: [
-      'Contributed to SyncDots and InstaPrivat.',
-      'Worked on integrations and platform features.',
+      'Built the messaging-automation layer: idempotent sends, scheduling, and auto-replies.',
+      'Modeled WhatsApp webhook failures honestly — retries, timeouts, and partial failures.',
+      'Deep-linked WhatsApp inquiries for InstaPrivat so context survived the handoff.',
     ],
   },
 ];
@@ -59,10 +74,10 @@ const experience = [
 
   <section class="section" id="projects">
     <div class="site-shell">
-      <h2>Projects</h2>
+      <h2 class="reveal reveal--line">Projects</h2>
       {projects.length > 0 ? (
         <div class="grid grid-cards">
-          {projects.map((project) => <ProjectCard project={project} />)}
+          {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
         </div>
       ) : (
         <div class="empty-state">
@@ -74,9 +89,9 @@ const experience = [
 
   <section class="section" id="experience">
     <div class="site-shell stack">
-      <h2>Experience</h2>
+      <h2 class="reveal reveal--line">Experience</h2>
       <div class="stack">
-        {experience.map((item) => <ExperienceItem {...item} />)}
+        {experience.map((item, index) => <ExperienceItem {...item} index={index} />)}
       </div>
     </div>
   </section>

@@ -1,14 +1,53 @@
 ---
-const { role, company, dates, highlights = [] } = Astro.props;
+interface Props {
+  role: string;
+  company: string;
+  dates: string;
+  location?: string;
+  url?: string;
+  focus?: string[];
+  highlights?: string[];
+  tone?: 'accent' | 'signal' | 'success';
+  index?: number;
+}
+
+const {
+  role,
+  company,
+  dates,
+  location,
+  url,
+  focus = [],
+  highlights = [],
+  tone = 'accent',
+  index = 0,
+} = Astro.props;
 ---
 
-<article class="experience-item">
-  <h3 class="experience-item__role">{role}</h3>
-  <p class="experience-item__meta">
-    {company} · {dates}
-  </p>
+<article class={`experience-item experience-item--${tone} reveal`} style={`--i: ${index}`}>
+  <div class="experience-item__head">
+    <h3 class="experience-item__role">{role}</h3>
+    <p class="experience-item__meta">
+      {url ? <a href={url} target="_blank" rel="noopener">{company}</a> : company}
+      <span class="experience-item__sep" aria-hidden="true">·</span>
+      {dates}
+      {location && (
+        <>
+          <span class="experience-item__sep" aria-hidden="true">·</span>
+          {location}
+        </>
+      )}
+    </p>
+  </div>
+
+  {focus.length > 0 && (
+    <div class="experience-item__focus">
+      {focus.map((item) => <span class="tag">{item}</span>)}
+    </div>
+  )}
+
   {highlights.length > 0 && (
-    <ul>
+    <ul class="experience-item__highlights">
       {highlights.map((highlight) => <li>{highlight}</li>)}
     </ul>
   )}

@@ -5,8 +5,8 @@ const { images = [] } = Astro.props;
 {
   images.length > 0 && (
     <div class="gallery">
-      {images.map((image) => (
-        <figure>
+      {images.map((image, index) => (
+        <figure class="reveal reveal--frame" style={`--i: ${index}`}>
           <img src={image.src} alt={image.alt} loading="lazy" />
           {image.caption && <figcaption>{image.caption}</figcaption>}
         </figure>

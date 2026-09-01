@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectGallery from '../../components/ProjectGallery.astro';
+import BackLink from '../../components/BackLink.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -18,14 +19,17 @@ const { title, description, tags = [], liveUrl, repoUrl, images = [] } = project
 
 <BaseLayout title={title}>
   <article class="article site-shell section">
-    <h1>{title}</h1>
-    <p class="hero__lead">{description}</p>
+    <div class="article__back reveal">
+      <BackLink href="/#projects" label="All projects" />
+    </div>
+    <h1 class="reveal reveal--line">{title}</h1>
+    <p class="hero__lead reveal" style="--i: 1">{description}</p>
 
-    <div class="cluster">
+    <div class="cluster reveal" style="--i: 2">
       {tags.map((tag) => <span class="tag">{tag}</span>)}
     </div>
 
-    <div class="cluster">
+    <div class="cluster reveal" style="--i: 3">
       {liveUrl && (
         <a class="button button--accent" href={liveUrl} target="_blank" rel="noopener">
           Live Demo
@@ -40,7 +44,7 @@ const { title, description, tags = [], liveUrl, repoUrl, images = [] } = project
 
     <ProjectGallery images={images} />
 
-    <div class="article__body">
+    <div class="article__body reveal" style="--i: 4">
       <Content />
     </div>
   </article>

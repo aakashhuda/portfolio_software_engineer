@@ -1,9 +1,9 @@
 ---
-const { project } = Astro.props;
+const { project, index = 0 } = Astro.props;
 const { title, description, tags = [], status, liveUrl, repoUrl } = project.data;
 ---
 
-<article class="card">
+<article class="card reveal reveal--frame" style={`--i: ${index}`}>
   <h3 class="card__title">
     <a href={`/projects/${project.id}`}>{title}</a>
   </h3>

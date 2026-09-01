@@ -10,11 +10,11 @@ const posts = (
 
 <BaseLayout title="Blog">
   <section class="site-shell section">
-    <h1>Blog</h1>
+    <h1 class="reveal reveal--line">Blog</h1>
 
     {posts.length > 0 ? (
       <div class="grid grid-cards">
-        {posts.map((post) => <BlogPostCard post={post} />)}
+        {posts.map((post, index) => <BlogPostCard post={post} index={index} />)}
       </div>
     ) : (
       <div class="empty-state">

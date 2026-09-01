@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import BackLink from '../../components/BackLink.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -17,17 +18,20 @@ const { title, description, date, tags = [] } = post.data;
 
 <BaseLayout title={title}>
   <article class="article site-shell section">
-    <p class="meta">
+    <div class="article__back reveal">
+      <BackLink href="/blog/" label="All posts" />
+    </div>
+    <p class="meta reveal" style="--i: 1">
       {date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
     </p>
-    <h1>{title}</h1>
-    <p class="hero__lead">{description}</p>
+    <h1 class="reveal reveal--line" style="--i: 1">{title}</h1>
+    <p class="hero__lead reveal" style="--i: 2">{description}</p>
 
-    <div class="cluster">
+    <div class="cluster reveal" style="--i: 3">
       {tags.map((tag) => <span class="tag">{tag}</span>)}
     </div>
 
-    <div class="article__body">
+    <div class="article__body reveal" style="--i: 4">
       <Content />
     </div>
   </article>

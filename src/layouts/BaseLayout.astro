@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 
 const { title = 'Portfolio' } = Astro.props;
 const siteTitle = 'Syed Mahbubul Huda';
-const email = 'mahbub@example.com';
+const email = 'syedmahbubulhuda@gmail.com';
 ---
 
 <!doctype html>
@@ -25,14 +26,30 @@ const email = 'mahbub@example.com';
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
     <title>{title === siteTitle ? title : `${title} — ${siteTitle}`}</title>
   </head>
   <body>
+    <ClientRouter />
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <header class="site-header">
+    <header class="site-header" transition:persist="header">
       <div class="site-header__inner site-shell">
-        <a class="brand" href="/">SMH<span aria-hidden="true">.</span>dev</a>
+        <a class="brand" href="/">
+          <img
+            class="brand__mark"
+            src="/logo.svg"
+            alt=""
+            width="30"
+            height="30"
+            aria-hidden="true"
+          />
+          <span>SMH<span class="brand__dot" aria-hidden="true">.</span>dev</span>
+        </a>
 
         <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav">
           Menu
@@ -51,7 +68,7 @@ const email = 'mahbub@example.com';
       <slot />
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" transition:persist="footer">
       <div class="site-footer__inner site-shell">
         <span>© {new Date().getFullYear()} Syed Mahbubul Huda</span>
         <a class="mailto" href={`mailto:${email}`}>{email}</a>
@@ -67,6 +84,34 @@ const email = 'mahbub@example.com';
         toggle.setAttribute('aria-expanded', String(Boolean(isOpen)));
         toggle.textContent = isOpen ? 'Close' : 'Menu';
       });
+
+      // Scroll reveal: activate elements as they enter the viewport,
+      // falling back to "visible now" when IntersectionObserver is unavailable.
+      function setupReveal() {
+        const revealEls = document.querySelectorAll('.reveal:not(.is-visible)');
+        if (revealEls.length === 0) return;
+
+        if (!('IntersectionObserver' in window)) {
+          revealEls.forEach((el) => el.classList.add('is-visible'));
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
+        );
+        revealEls.forEach((el) => observer.observe(el));
+      }
+
+      setupReveal();
+      document.addEventListener('astro:page-load', setupReveal);
     </script>
   </body>
 </html>
