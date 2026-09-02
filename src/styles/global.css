@@ -191,7 +191,6 @@ a:hover {
 
 .section {
   padding-block: var(--space-8);
-  border-top: var(--border-thin) solid var(--color-ink);
 }
 
 .stack > * + * {
@@ -410,6 +409,7 @@ a:hover {
 /* ---------- Header / Nav ---------- */
 
 .site-header {
+  border-bottom: var(--border-thick) solid var(--color-ink);
   background: var(--color-surface);
 }
 
