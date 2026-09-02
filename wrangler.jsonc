@@ -1,7 +1,7 @@
 // wrangler.jsonc
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "portfolio_software_engineer",
+  "name": "portfolio-software-engineer",
   "main": "src/worker.js",
   "compatibility_date": "2026-09-01",
   "assets": {
