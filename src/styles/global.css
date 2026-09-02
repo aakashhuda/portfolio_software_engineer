@@ -510,19 +510,97 @@ a:hover {
 
 .hero {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-6);
-  align-items: start;
+  grid-template-columns: minmax(11rem, 16rem) 1fr;
+  gap: var(--space-7);
+  align-items: center;
   padding-block: var(--space-9) var(--space-8);
 }
 
-.hero__mark {
-  width: clamp(4rem, 10vw, 7rem);
-  height: clamp(4rem, 10vw, 7rem);
-  background: var(--color-accent);
-  box-shadow: var(--shadow-accent);
-  border: var(--border-thick) solid var(--color-ink);
+.hero__portrait {
+  position: relative;
+  margin: 0;
+  justify-self: start;
   animation: mark-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero__portrait::before {
+  content: '';
+  position: absolute;
+  top: var(--space-3);
+  right: calc(-1 * var(--space-3));
+  bottom: calc(-1 * var(--space-3));
+  left: var(--space-3);
+  background: var(--color-accent);
+  border: var(--border-thick) solid var(--color-ink);
+  z-index: 0;
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero__portrait::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--border-thick);
+  background: var(--color-signal);
+  z-index: 2;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero__portrait img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  border: var(--border-thick) solid var(--color-ink);
+  box-shadow: var(--shadow-md);
+  object-fit: cover;
+  transition: box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover: the hard offset deepens. The accent block steps away,
+   the photo's own shadow grows, and the signal line draws across. */
+.hero__portrait:hover::before {
+  transform: translate(6px, 6px);
+}
+
+.hero__portrait:hover::after {
+  transform: scaleX(1);
+}
+
+.hero__portrait:hover img {
+  box-shadow: var(--shadow-lg);
+}
+
+.hero__portrait figcaption {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: var(--border-thin) solid var(--color-ink);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-2) var(--space-3);
+}
+
+.hero__portrait-dot {
+  width: 0.55em;
+  height: 0.55em;
+  flex: none;
+  background: var(--color-signal);
+  border: 2px solid var(--color-ink);
 }
 
 .hero__name {
@@ -949,6 +1027,11 @@ a:hover {
 
   .hero {
     grid-template-columns: 1fr;
+  }
+
+  .hero__portrait {
+    justify-self: center;
+    max-width: min(16rem, 70vw);
   }
 
   .site-header__inner {
