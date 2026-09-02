@@ -6,6 +6,7 @@
 - Primary Stack: Python, Django, FastAPI, Vue, Nuxt, Astro, SQL based DBs, NoSQL(firebase, etc), Shopify
 - Primary Interest: Agentic Development
 - GitHub: https://github.com/aakashhuda
+- Image: @context/references/syed_mahbubul_huda.jpg
 - Worked with: SyncDots, Instaprivat - (2021-2022), EchoLogyx - (2022-2024), Ichiban Autos(WorkshopLogic) - (2024-Present)
 - Work Links
   - SyncDots: https://syncdots.id/
