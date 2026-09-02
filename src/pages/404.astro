@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found">
+  <section class="notfound site-shell">
+    <p class="notfound__tag reveal">// 404 — page not found</p>
+    <p class="notfound__code reveal reveal--line" aria-hidden="true">404</p>
+    <h1 class="notfound__title reveal" style="--i: 1">This page wandered off.</h1>
+    <p class="notfound__lead reveal" style="--i: 2">
+      The page you're looking for doesn't exist, moved, or was never here
+      in the first place. The important stuff is still one click away.
+    </p>
+    <div class="cluster reveal" style="--i: 3">
+      <a class="button button--accent" href="/">Back home</a>
+      <a class="button" href="/#projects">View projects</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound {
+    min-height: 70vh;
+    display: grid;
+    align-content: center;
+    gap: var(--space-4);
+    padding-block: var(--space-9);
+  }
+
+  .notfound__tag {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-strong);
+    justify-self: start;
+    background: var(--color-accent-soft);
+    border: var(--border-thin) solid var(--color-ink);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-2) var(--space-3);
+    margin: 0;
+  }
+
+  .notfound__code {
+    font-family: var(--font-display);
+    font-size: clamp(7rem, 30vw, 16rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--color-ink);
+    text-shadow: 10px 10px 0 var(--color-signal);
+    margin: var(--space-4) 0 var(--space-2);
+  }
+
+  .notfound__title {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-xl), 5vw, var(--text-2xl));
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .notfound__lead {
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    max-width: 44rem;
+  }
+
+  @media (max-width: 640px) {
+    .notfound__code {
+      text-shadow: 6px 6px 0 var(--color-signal);
+    }
+  }
+</style>

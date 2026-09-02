@@ -184,11 +184,65 @@ inconsistencies and edge cases, and polish until the details hold up.
 
 ---
 
-## Phase 4 — VPS deployment guide & deploy
+## Phase 4 — Cloudflare Workers deployment & CI/CD
+
+**Goal:** The site is live at the production domain over HTTPS on
+Cloudflare Workers via Workers Static Assets, and every push to `main`
+deploys it automatically through Workers Builds (Git integration).
+
+> Deploy destination decision: Cloudflare (this phase) is the live
+> deploy. The VPS phase that follows (now Phase 5) is **optional and
+> deferred** — only do it if a second deployment target is still wanted.
+
+**Tasks:**
+
+- Confirm the production domain (an existing domain already in your
+  Cloudflare account) and set it as `site` in `astro.config.mjs` — the
+  placeholder `https://yourdomain.com` value is finalized here.
+- Follow the step-by-step guide at
+  `context/docs/plans/cloudflare-workers-deployment-guide.md` top to
+  bottom, logging each completed step in `context/current-feature.md`.
+- Add `wrangler.jsonc` at the repo root so the project deploys as a
+  Worker with static assets: `assets.directory` = `dist`, a
+  `not_found_handling` that serves the SPA fallback or 404s as decided,
+  and a minimal Worker entry (Workers Static Assets serves `dist/`
+  directly — no adapter needed for a fully static Astro site).
+- Install Wrangler as a dev dependency (`npm install -D wrangler`) —
+  the first new package since Phase 0.
+- Authenticate with `npx wrangler login` and run `npx wrangler deploy`
+  once to create the project and confirm the assets serve over HTTPS at
+  its `*.workers.dev` URL.
+- Connect the GitHub repo (`origin` is
+  `github.com/aakashhuda/portfolio_software_engineer`) in the Cloudflare
+  dashboard under **Workers Builds**: build command `npm run build`,
+  output directory `dist`, Node version matching `package.json`
+  (`>=22.12.0`). Workers Builds builds on Cloudflare's side, so `dist/`
+  stays gitignored and is never committed.
+- Attach the production domain to the Worker (Workers dashboard →
+  Settings → Domains & Routes); with the domain already on Cloudflare,
+  DNS records are managed automatically.
+- Verify the live site, then make a real push to `main` and confirm the
+  Workers Build auto-deploys.
+
+**Done when:**
+
+- The site is reachable over `https://` at the production domain and
+  serves the Phase 3 build.
+- Pushing to `main` triggers a Workers Build that deploys automatically
+  (verified end-to-end once).
+- The domain in `astro.config.mjs` (`site`) matches production.
+
+---
+
+## Phase 5 — VPS deployment guide & deploy (optional, deferred)
 
 **Goal:** The site is live at the production domain over HTTPS on a VPS,
 and the deployment process is documented so it can be repeated and updated
 without head-scratching.
+
+> This phase is optional. Phase 4 already deploys the live site to
+> Cloudflare Workers; do this only if you also want a self-managed VPS
+> deployment target.
 
 **Tasks:**
 
@@ -213,7 +267,7 @@ without head-scratching.
 
 ---
 
-## Phase 5 — Launch & final QA
+## Phase 6 — Launch & final QA
 
 **Goal:** Final end-to-end check on the live site, then hand over.
 
@@ -238,5 +292,5 @@ without head-scratching.
 
 Revisit `project-overview.md`'s "Out of Scope" list if new needs come up
 (dark mode toggle, analytics, RSS feed, more blog posts). Each of those is
-a small, separate piece of work — not a continuation of Phase 5 — and gets
+a small, separate piece of work — not a continuation of Phase 6 — and gets
 its own branch and review rather than being bolted on ad hoc.
