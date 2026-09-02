@@ -44,3 +44,13 @@ Not Started | Loaded | In Progress | Completed
   - Marked WorkshopLogic `in-progress` to reflect ongoing work.
   - Verified: `npm run build` passes and generates all project and blog routes with no schema errors.
   - Merged to `main` and tagged `phase-2-complete`.
+
+- **Phase 3 — Design review & polish** — Completed
+  - Added an SMH logo (`public/logo.svg`) plus SVG/ICO favicons (`public/favicon.svg`, `public/favicon.ico`) used in the header and site head.
+  - Added a shared `BackLink` component wired into project and blog detail pages; added logo/favicon and back-button polish to `BaseLayout.astro`.
+  - Enriched experience entries in `ExperienceItem.astro` with location, links, focus tags, and color-coded roles.
+  - Replaced the generic fade reveal with an authored "structure draws itself" scroll-motion system (headings, cards, role bars, galleries, detail intros) with reduced-motion support in `BaseLayout.astro`.
+  - Added the site's portrait image to `context/project-overview.md` and `public/portrait.webp` for the about section.
+  - Updated the footer email to `syedmahbubulhuda@gmail.com`.
+  - Verified: desktop + mobile walkthrough of every page shows no visual inconsistencies; `npm run build` passes with no missing/broken asset warnings.
+  - Work done directly on `main`; tagged `phase-3-complete`.
