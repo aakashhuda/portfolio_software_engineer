@@ -1,12 +1,12 @@
 ---
-title: "WorkshopLogic"
-description: "Workshop management SaaS — license-plate ordering, time tracking, invoicing, and automated customer follow-ups."
+title: "A/B Test"
+description: "A/B testing is an experiment comparing two versions (A and B) of a digital asset to see which one performs better based on generated Analytics with controlled audiance."
 date: 2024-03-01
-tags: ["Python", "Django", "DRF", "Vue", "PostgreSQL", "REDIS"]
-role: "Software Engineer"
-status: "in-progress"
-featured: true
-liveUrl: "https://www.workshoplogic.com/"
+tags: ["Vanilla JS", "HTML", "CSS", "VWO", "Dynamic Yeild", "Optimizely"]
+role: "Solution Engineer"
+status: "completed"
+featured: false
+liveUrl: "https://www.echologyx.com/ab-testing"
 ---
 
 ## Overview

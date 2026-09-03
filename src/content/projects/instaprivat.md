@@ -1,11 +1,11 @@
 ---
 title: "InstaPrivat"
-description: "Home tutoring service across Jabodetabek — private tutors for every level, booked through WhatsApp."
+description: "Home tutoring service across Jabodetabek — private tutors for every level, booked through WhatsApp and managed by an Admin Panel"
 date: 2021-11-01
-tags: ["Web", "Education", "Booking", "WhatsApp", "Lead Generation"]
+tags: ["Django", "DRF", "Vuejs", "SendGrid", "Flip", "Telegram Bot"]
 role: "Software Engineer"
 status: "completed"
-featured: false
+featured: true
 liveUrl: "https://instaprivat.com/"
 ---
 

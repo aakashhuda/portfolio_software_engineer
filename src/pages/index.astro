@@ -1,53 +1,77 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import ExperienceItem from '../components/ExperienceItem.astro';
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import ExperienceItem from "../components/ExperienceItem.astro";
 
-const projects = (await getCollection('projects'))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 
 const experience = [
   {
-    role: 'Software Engineer',
-    company: 'Ichiban Autos — WorkshopLogic',
-    dates: '2024 — Present',
-    location: 'Remote',
-    url: 'https://www.workshoplogic.com/',
-    tone: 'accent',
-    focus: ['Django', 'Vue', 'PostgreSQL', 'Xero', 'Supplier APIs'],
+    role: "Software Engineer",
+    company: "Ichiban Autos",
+    dates: "2024 — Present",
+    location: "New Zealand (remote)",
+    url: "https://www.workshoplogic.com/",
+    tone: "accent",
+    focus: [
+      "Python",
+      "Django",
+      "Django Rest Framework",
+      "Vue",
+      "PostgreSQL",
+      "Xero",
+      "Redis",
+      "Tailwind",
+    ],
     highlights: [
-      'Shipping full-stack features for a vertical SaaS used by auto-repair workshops.',
-      'Owning invoice correctness — license-plate lookups, OCR, and barcode scans feeding one ledger.',
-      'Integrating Xero and supplier systems so the tool fits existing shop workflows.',
+      "Built procurement system with Invoice, Credit Note, Prepayment & Invoice payments.",
+      "RBAC - Role based Access Control.",
+      "Invoice & Payment sync with Xero (Statistic software).",
+      "Customer chat functionality.",
+      "Banking Screen with Analytics.",
+      "VCLOUD POS integration.",
     ],
   },
   {
-    role: 'Software Engineer',
-    company: 'EchoLogyx',
-    dates: '2022 — 2024',
-    location: 'Remote',
-    url: 'https://www.echologyx.com/',
-    tone: 'signal',
-    focus: ['Shopify', 'A/B Testing', 'VWO', 'Convert', 'QA'],
+    role: "Software Engineer",
+    company: "EchoLogyx",
+    dates: "2022 — 2024",
+    location: "Chattogram",
+    url: "https://www.echologyx.com/",
+    tone: "signal",
+    focus: ["Vanilla JS", "HTML", "CSS", "Shopify", "A/B Testing", "Django"],
     highlights: [
-      'Built Ninety Percent and ELX ChatBot alongside the client engineering team.',
-      'Shipped A/B tests on live, high-traffic storefronts — isolated, rollback-safe, reviewable.',
-      'Learned to treat experiment velocity as a reliability problem, not just a conversion one.',
+      "Led a team to develop a Shopify theme for the site Ninety Percent with custom functionality, an Ecommerce application.",
+      "Built the Admin Panel of ELX ChatBot which is a Personalized AI-powered ChatBot for eCommerce.",
+      "Shipped A/B tests on live. Learned the overall action of A/B Test.",
+      "Refactored the complete backend of a Django based project named Proofly.",
     ],
   },
   {
-    role: 'Software Engineer',
-    company: 'SyncDots & InstaPrivat',
-    dates: '2021 — 2022',
-    location: 'Remote',
-    url: 'https://syncdots.id/',
-    tone: 'success',
-    focus: ['Python', 'WhatsApp API', 'Automation', 'CRM', 'Lead Gen'],
+    role: "Fullstack Developer",
+    company: "SyncDots",
+    dates: "2021 — 2022",
+    location: "Chatttogram",
+    url: "https://syncdots.id/",
+    tone: "success",
+    focus: [
+      "Python",
+      "Django",
+      "Django Rest Framework",
+      "Vue",
+      "PostgreSQL",
+      "Redis",
+      "Bootstrap",
+    ],
     highlights: [
-      'Built the messaging-automation layer: idempotent sends, scheduling, and auto-replies.',
-      'Modeled WhatsApp webhook failures honestly — retries, timeouts, and partial failures.',
-      'Deep-linked WhatsApp inquiries for InstaPrivat so context survived the handoff.',
+      "Developed a complete Ecommerce website with Admin Panel and Production Panel.",
+      "Worked on creating Admin functionalities through Telegram using BotFather",
+      "Developed features for InstaPrivat like Analytics, integrating Flip (Indonesian financial technology platform for transfer).",
+      "Integrated Sendgrid as SMTP server.",
+      "Integrated Stripe for online payments.",
     ],
   },
 ];
@@ -72,13 +96,20 @@ const experience = [
     <div class="stack">
       <h1 class="hero__name">Syed Mahbubul Huda</h1>
       <p class="hero__lead">
-        Software engineer with five years shipping real products across
-        Python, Django, FastAPI, Vue, Nuxt, and Astro — now focused on
-        agentic development.
+        <!-- Software engineer with five years shipping real products across Python,
+        Django, FastAPI, Vue, Nuxt, and Astro — now focused on agentic
+        development. -->
+        Provide abstract solution to real life problems. Beneath the quiet water,
+        a fish swims unaware — never knowing what lies beyond the surface...
       </p>
       <div class="cluster hero__actions">
         <a class="button button--accent" href="#projects">View projects</a>
-        <a class="button" href="https://github.com/aakashhuda" target="_blank" rel="noopener">
+        <a
+          class="button"
+          href="https://github.com/aakashhuda"
+          target="_blank"
+          rel="noopener"
+        >
           GitHub
         </a>
       </div>
@@ -88,15 +119,19 @@ const experience = [
   <section class="section" id="projects">
     <div class="site-shell">
       <h2 class="reveal reveal--line">Projects</h2>
-      {projects.length > 0 ? (
-        <div class="grid grid-cards">
-          {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
-        </div>
-      ) : (
-        <div class="empty-state">
-          <p>Project case studies land here in Phase 2.</p>
-        </div>
-      )}
+      {
+        projects.length > 0 ? (
+          <div class="grid grid-cards">
+            {projects.map((project, index) => (
+              <ProjectCard project={project} index={index} />
+            ))}
+          </div>
+        ) : (
+          <div class="empty-state">
+            <p>Project case studies land here in Phase 2.</p>
+          </div>
+        )
+      }
     </div>
   </section>
 
@@ -104,7 +139,11 @@ const experience = [
     <div class="site-shell stack">
       <h2 class="reveal reveal--line">Experience</h2>
       <div class="stack">
-        {experience.map((item, index) => <ExperienceItem {...item} index={index} />)}
+        {
+          experience.map((item, index) => (
+            <ExperienceItem {...item} index={index} />
+          ))
+        }
       </div>
     </div>
   </section>

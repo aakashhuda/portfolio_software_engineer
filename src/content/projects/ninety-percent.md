@@ -1,9 +1,9 @@
 ---
-title: "Ninety Percent"
+title: "Ninety Percent (Shopify Theme Development)"
 description: "Sustainable fashion label on Shopify that shares 90% of its profits between people and causes."
 date: 2023-02-01
-tags: ["Shopify", "Ecommerce", "JavaScript", "Liquid", "CRO"]
-role: "Software Engineer"
+tags: ["Shopify", "Liquid", "Ecommerce", "JavaScript"]
+role: "Frontend Developer"
 status: "completed"
 featured: true
 liveUrl: "https://ninetypercent.com/"

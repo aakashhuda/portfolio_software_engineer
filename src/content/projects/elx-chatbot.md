@@ -2,7 +2,7 @@
 title: "ELX ChatBot"
 description: "AI chatbot for ecommerce that automates support and boosts sales across Shopify, Adobe Commerce, WooCommerce, and BigCommerce."
 date: 2023-08-01
-tags: ["AI", "Chatbot", "Next.js", "NLP", "Ecommerce", "Shopify"]
+tags: ["Django", "Tailwind", "Flowbite", "AI", "Chatbot"]
 role: "Software Engineer"
 status: "completed"
 featured: true
