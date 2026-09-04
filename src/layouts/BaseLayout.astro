@@ -32,6 +32,7 @@ const email = "syedmahbubulhuda@gmail.com";
       document.documentElement.classList.add("js");
     </script>
     <title>{title === siteTitle ? title : `${title} — ${siteTitle}`}</title>
+    <slot name="head" />
   </head>
   <body>
     <ClientRouter />

@@ -78,6 +78,31 @@ const experience = [
 ---
 
 <BaseLayout title="Home">
+  <Fragment slot="head">
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Syed Mahbubul Huda" />
+    <meta
+      property="og:title"
+      content="Syed Mahbubul Huda — Software Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio of Syed Mahbubul Huda, software engineer."
+    />
+    <meta
+      property="og:url"
+      content={new URL(Astro.url.pathname, Astro.site).href}
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Syed Mahbubul Huda — Software Engineer"
+    />
+    <meta
+      name="twitter:description"
+      content="Syed Mahbubul Huda, software engineer with 5+ years of production experience of delivering Web Applications"
+    />
+  </Fragment>
   <section class="hero site-shell" id="about">
     <figure class="hero__portrait">
       <img
