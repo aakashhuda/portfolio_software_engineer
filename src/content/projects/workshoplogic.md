@@ -6,6 +6,7 @@ tags: ["Python", "Django", "DRF", "Vue", "PostgreSQL", "REDIS"]
 role: "Software Engineer"
 status: "in-progress"
 featured: true
+order: 1
 liveUrl: "https://www.workshoplogic.com/"
 ---
 

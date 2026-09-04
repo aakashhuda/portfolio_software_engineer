@@ -5,7 +5,10 @@ import ProjectCard from "../components/ProjectCard.astro";
 import ExperienceItem from "../components/ExperienceItem.astro";
 
 const projects = (await getCollection("projects")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  (a, b) =>
+    (a.data.order ?? Number.MAX_SAFE_INTEGER) -
+      (b.data.order ?? Number.MAX_SAFE_INTEGER) ||
+    b.data.date.valueOf() - a.data.date.valueOf()
 );
 
 const experience = [
@@ -127,12 +130,20 @@ const experience = [
       <div class="cluster hero__actions">
         <a class="button button--accent" href="#projects">View projects</a>
         <a
-          class="button"
+          class="button button--github"
           href="https://github.com/aakashhuda"
           target="_blank"
           rel="noopener"
         >
           GitHub
+        </a>
+        <a
+          class="button button--linkedin"
+          href="https://www.linkedin.com/in/sm-huda/"
+          target="_blank"
+          rel="noopener"
+        >
+          LinkedIn
         </a>
       </div>
     </div>
@@ -160,13 +171,48 @@ const experience = [
   <section class="section" id="experience">
     <div class="site-shell stack">
       <h2 class="reveal reveal--line">Experience</h2>
-      <div class="stack">
+      <div class="experience-zone reveal reveal--frame" data-experience-zone>
         {
           experience.map((item, index) => (
-            <ExperienceItem {...item} index={index} />
+            <div class="experience-float">
+              <ExperienceItem {...item} index={index} />
+            </div>
           ))
         }
       </div>
     </div>
   </section>
+
+  <script>
+    import "../scripts/experience-zone.js";
+  </script>
 </BaseLayout>
+
+<style>
+  .experience-zone {
+    position: relative;
+    background: var(--color-accent-soft);
+    border: var(--border-thick) solid var(--color-ink);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-5);
+  }
+
+  .experience-float {
+    position: static;
+  }
+
+  .experience-float + .experience-float {
+    margin-top: var(--space-5);
+  }
+
+  .experience-zone.is-active {
+    padding: 0;
+  }
+
+  .experience-zone.is-active .experience-float {
+    position: absolute;
+    width: 19rem;
+    margin-top: 0;
+    will-change: transform;
+  }
+</style>

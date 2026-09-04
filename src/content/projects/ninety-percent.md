@@ -6,6 +6,7 @@ tags: ["Shopify", "Liquid", "Ecommerce", "JavaScript"]
 role: "Frontend Developer"
 status: "completed"
 featured: true
+order: 3
 liveUrl: "https://ninetypercent.com/"
 ---
 

@@ -6,6 +6,7 @@ tags: ["Django", "Tailwind", "Flowbite", "AI", "Chatbot"]
 role: "Software Engineer"
 status: "completed"
 featured: true
+order: 4
 liveUrl: "https://www.elxchatbot.ai/"
 ---
 

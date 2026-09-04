@@ -7,3 +7,8 @@
 - Prefers using the `/impeccable` skill (and its playbooks) for UI polish and animation work when the task warrants it, but is also fine with the agent proceeding directly for simpler changes ("If needed use /impeccable. Else do it yourself"). Confidence: 0.85
 - Does not want a `Co-authored-by` trailer (e.g., `Co-authored-by: CommandCodeBot`) in git commit messages; explicitly asked to remove it from a commit and re-confirmed this on a later commit. Confidence: 0.95
 - Does not want any modules or packages used that are not already locally available — prefers working only with installed/available tools (e.g., curl) over installing anything new, whether for testing or otherwise. Confidence: 0.9
+- Prefers strictly scoped fixes: when asking for a specific kind of correction (e.g., "only fix the spellings. Nothing else."), expects no other changes to content, wording, style, or structure — keep edits limited to exactly what was requested. Confidence: 0.8
+- When offered implementation options, tends to pick the smallest-scope / lowest-footprint choice even against the agent's "recommended" richer option (e.g., chose homepage-only, text-only Open Graph/Twitter cards with no og:image over per-page tags plus a share image). Prefers minimal, no-new-assets solutions for feature asks. Confidence: 0.6
+- Prefers the agent to work in the current branch rather than creating a new one (explicitly: "Do it in this current branch"). Confidence: 0.7
+- Prefers external/social links (e.g., LinkedIn) to open in a new tab. Confidence: 0.6
+- Prefers ordering/sorting to be data-driven through easily hand-editable fields (e.g., a frontmatter `order` number) so they can reorder content later without code changes. Confidence: 0.6

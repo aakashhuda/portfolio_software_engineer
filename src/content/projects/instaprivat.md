@@ -6,6 +6,7 @@ tags: ["Django", "DRF", "Vuejs", "Vuex", "SendGrid", "Flip", "Telegram Bot"]
 role: "Software Engineer"
 status: "completed"
 featured: true
+order: 2
 liveUrl: "https://instaprivat.com/"
 ---
 

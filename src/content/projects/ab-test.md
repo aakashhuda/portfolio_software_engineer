@@ -6,6 +6,7 @@ tags: ["Vanilla JS", "HTML", "CSS", "VWO", "Dynamic Yield", "Optimizely"]
 role: "Solution Engineer"
 status: "completed"
 featured: false
+order: 5
 liveUrl: "https://www.echologyx.com/ab-testing"
 ---
 

@@ -263,6 +263,24 @@ a:hover {
   background: var(--color-accent-strong);
 }
 
+.button--linkedin {
+  background: #0a66c2;
+  color: #ffffff;
+}
+
+.button--linkedin:hover {
+  background: #074e97;
+}
+
+.button--github {
+  background: #24292e;
+  color: #ffffff;
+}
+
+.button--github:hover {
+  background: #0e0e0e;
+}
+
 /* ---------- Back link ---------- */
 
 .back-link {
