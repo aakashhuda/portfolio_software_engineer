@@ -22,9 +22,9 @@ charge is forgotten.
 ## What I work on
 
 - RBAC - Custom Role Base Access for all the actions in the application
-- Complete Procurment System with Supplier Invoices, Credit Notes with status management
+- Complete Procurement System with Supplier Invoices, Credit Notes with status management
 - Banking Screen - with Invoice management, Statements for Customers
-- Report management - Deveplope different Buisness report for the company and customer
+- Report management - Develop different Business report for the company and customer
 - Customer Notification - SMS, Notification, Email updates
 - Customer Prepayment, Credit Notes, Activity management and Analytics
 - VCLOUD POS Terminal integration, Invoice Payments, Customer Prepayments
@@ -32,7 +32,7 @@ charge is forgotten.
 - Service recommendation and approving for Invoice inclusion
 - Generate printable PDF/EXCEL for reports and banking screen
 - Redis cache management
-- Mutli company management
+- Multi company management
 
 ## Approach and challenges
 

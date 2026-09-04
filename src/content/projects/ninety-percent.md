@@ -35,18 +35,18 @@ included:
 
 ## Approach and challenges
 
-It was my initial days in EchoLogyx and I had no prior experience in rigourous frontend development.
+It was my initial days in EchoLogyx and I had no prior experience in rigorous frontend development.
 I was going through a Shopify learning period of 10-15 days when I was given with the opportunity.
 We had very little time of 2 months to pull over the project and meet the deadline.
 
 - Learned Liquid templating language
 - Shopify structures - snippets, sections, blocks, product DB with Meta data, Checkout
 - Shopify Storefront API
-- Mailchip Email Marketing
+- Mailchimp Email Marketing
 
 ## Stack and takeaways
 
-Shopify with Liquid templates and custom JavaScript, optimised for a
+Shopify with Liquid templates and custom JavaScript, optimized for a
 content- and image-heavy catalogue. The lesson: on a platform like Shopify,
 the value is in restraint and consistency — choosing the few customisations
 that actually differentiate the store, and making them robust rather than

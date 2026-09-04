@@ -22,22 +22,22 @@ concern rather than an afterthought.
 
 I worked on developing the Admin Panel for the Bot. Django was the primary backend and
 frontend for the panel. From this panel we could handle the chat sessions, schedule the bot and
-interfier conversations when necessary. It hold the company information and could control the UI
+interfere conversations when necessary. It hold the company information and could control the UI
 of the chatbot integrated with any eCommerce.
 This project had three services running in a Microservice pattern. The other two parts are the
 model hosting with the store based trained with prompts and the actual frontend chatbox.
 
 - Custom updatable Cron Jobs from the Admin panel using Django Celery to schedule the ChatBot
 - Company and store timezone management. Scheduling based on the company timezone
-- Complete chat sessions management with interfiering and letting go
-- Asynchronus socket based connections managemment
+- Complete chat sessions management with interfering and letting go
+- Asynchronous socket based connections management
 - Self closing chat sessions
 - Training data location management of scripts for store based products and ecommerce technologies like WooCommerce, Shopify etc
 
 ## Approach and challenges
 
-The Admin panel is the middle point of the conversation in a real case schenario. So
-it was a challenge to maintain so the flow is never interupted by the admin panel as all
+The Admin panel is the middle point of the conversation in a real case scenario. So
+it was a challenge to maintain so the flow is never interrupted by the admin panel as all
 services communicated with each other. For admin panel frontend components used tailwind
 css components from Flowbite.
 

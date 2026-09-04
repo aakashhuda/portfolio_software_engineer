@@ -1,8 +1,8 @@
 ---
 title: "A/B Test"
-description: "A/B testing is an experiment comparing two versions (A and B) of a digital asset to see which one performs better based on generated Analytics with controlled audiance."
+description: "A/B testing is an experiment comparing two versions (A and B) of a digital asset to see which one performs better based on generated Analytics with controlled audience."
 date: 2024-03-01
-tags: ["Vanilla JS", "HTML", "CSS", "VWO", "Dynamic Yeild", "Optimizely"]
+tags: ["Vanilla JS", "HTML", "CSS", "VWO", "Dynamic Yield", "Optimizely"]
 role: "Solution Engineer"
 status: "completed"
 featured: false

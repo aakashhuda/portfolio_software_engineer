@@ -20,23 +20,23 @@ where conversion speed matters more than a heavy checkout flow.
 ## What I worked on
 
 This is my second project that I worked in terms of production experience.
-This is where I was introduced with large scale Relational DB managment and
+This is where I was introduced with large scale Relational DB management and
 conventions.
 
 - Teacher/Student class booking
 - Payments send/receive through Flip (Indonesian financial technology platform for transfer)
 - Build the complete Analytics of the Company for management
-- RBAC - Impeleted Role based access and RBAC management
+- RBAC - Implemented Role based access and RBAC management
 - Telegram Bot - Integrated Botfather with management commands run for admin functionality
 - Teacher Resume Builder
-- Designed and implemented backend multithreading functionlity with updateadable cron jobs
+- Designed and implemented backend multithreading functionality with updatable cron jobs
 - Worked in Invoices and payments
 - Cache management using REDIS
 
 ## Approach and challenges
 
 Introduced to Django hybrid setup with Vue. Django served the pages with SSR where vue was
-integrated. Overall project directory was new, conventionally used by Chinease developers.
+integrated. Overall project directory was new, conventionally used by Chinese developers.
 State management and custom checkout management handled. Also learned the approach to schedule
 and datetime management. Modular monolithic approaches in Frontend and Backend.
 
