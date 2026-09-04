@@ -13,7 +13,7 @@ liveUrl: "https://www.workshoplogic.com/"
 
 WorkshopLogic is management software for automotive repair workshops. It
 replaces the admin sprawl of running a shop — parts ordering, mechanic time
-tracking, job booking, invoicing, and customer follow-up — with a single
+tracking, job booking, invoicing, and customer follow-up with a single
 system. The product's differentiators are grounded in real shop workflows:
 order parts from a vehicle's license plate, clock mechanics on and off jobs
 by scanning the plate, and scan barcodes straight onto an invoice so no
@@ -21,29 +21,32 @@ charge is forgotten.
 
 ## What I work on
 
-I'm a software engineer on the platform, working across the stack from the
-Django backend to the Vue front-end. The work spans core product features,
-integrations with suppliers and accounting systems like Xero, and the
-operational details that make a workshop actually adopt the tool day to day.
+- RBAC - Custom Role Base Access for all the actions in the application
+- Complete Procurment System with Supplier Invoices, Credit Notes with status management
+- Banking Screen - with Invoice management, Statements for Customers
+- Report management - Deveplope different Buisness report for the company and customer
+- Customer Notification - SMS, Notification, Email updates
+- Customer Prepayment, Credit Notes, Activity management and Analytics
+- VCLOUD POS Terminal integration, Invoice Payments, Customer Prepayments
+- Syncing Invoices & Payments in Xero (statistics application)
+- Service recommendation and approving for Invoice inclusion
+- Generate printable PDF/EXCEL for reports and banking screen
+- Redis cache management
+- Mutli company management
 
 ## Approach and challenges
 
-The domain is what makes it interesting. A workshop is a fast, chaotic
-environment — mechanics don't sit at desks, and anything that adds friction
-gets abandoned. That changes how you design: time tracking has to be
-scan-a-plate simple, job booking has to be a handful of clicks, and cash
-sales need to clear in three steps.
+The project follows a well-structured and consistently maintained coding architecture,
+with strong adherence to established coding standards and best practices.
+The approach to feature development is systematic, clean, and maintainable, ensuring
+consistency across the codebase.
 
-Data accuracy is the business-critical constraint. License-plate lookups that
-pull vehicle details, OCR on supplier invoices, and barcode scanning all feed
-the same ledger of what was sold and what it cost. Getting those inputs wrong
-quietly erodes a shop's margins, so the integrations and the invoicing model
-had to be built for correctness first.
+The overall system is designed using a modular monolithic architecture,
+where the application is organized into well-defined and loosely coupled modules.
+This approach helps maintain separation of concerns while keeping the system manageable and scalable.
 
-## Stack and takeaways
+## Team Members
 
-Python and Django on the backend, Vue on the front-end, with PostgreSQL for
-relational data and integrations into Xero, Repco, and other supplier
-systems. The lesson I keep coming back to: in vertical SaaS, the hardest
-problems are workflow problems, not technical ones. The software has to
-disappear into the way a mechanic already works.
+- Software Engineer - Adnan Alam
+- FullStack Developer - Ahmed Hossain
+- Flutter App Developer - Yasin Shamrat

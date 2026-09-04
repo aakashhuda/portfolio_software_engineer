@@ -2,7 +2,7 @@
 title: "InstaPrivat"
 description: "Home tutoring service across Jabodetabek — private tutors for every level, booked through WhatsApp and managed by an Admin Panel"
 date: 2021-11-01
-tags: ["Django", "DRF", "Vuejs", "SendGrid", "Flip", "Telegram Bot"]
+tags: ["Django", "DRF", "Vuejs", "Vuex", "SendGrid", "Flip", "Telegram Bot"]
 role: "Software Engineer"
 status: "completed"
 featured: true
@@ -19,30 +19,33 @@ where conversion speed matters more than a heavy checkout flow.
 
 ## What I worked on
 
-I worked on the web presence and the inquiry path. The service deliberately
-routes registration through WhatsApp rather than a traditional form, because
-parents in this market want a quick human conversation about tutor
-availability before committing. My job was to make that handoff as
-low-friction as possible while still capturing enough context for the team
-to follow up intelligently.
+This is my second project that I worked in terms of production experience.
+This is where I was introduced with large scale Relational DB managment and
+conventions.
+
+- Teacher/Student class booking
+- Payments send/receive through Flip (Indonesian financial technology platform for transfer)
+- Build the complete Analytics of the Company for management
+- RBAC - Impeleted Role based access and RBAC management
+- Telegram Bot - Integrated Botfather with management commands run for admin functionality
+- Teacher Resume Builder
+- Designed and implemented backend multithreading functionlity with updateadable cron jobs
+- Worked in Invoices and payments
+- Cache management using REDIS
 
 ## Approach and challenges
 
-The design constraint was that a tutoring inquiry is high-context: the
-student's level, subject, location, and schedule all matter. A plain "contact
-us" button loses that. Deep-linking each program into WhatsApp with a
-pre-filled message preserved the context, so a parent lands in chat already
-describing what they need.
-
-The programme catalogue also needed to read clearly on mobile, since a large
-share of parents browse on their phone in the evening. Keeping the many
-programmes (SD, SMP, SMA, SBMPTN, Olympiad, languages, mengaji) scannable
-without turning the page into an endless list was a real information-design
-problem.
+Introduced to Django hybrid setup with Vue. Django served the pages with SSR where vue was
+integrated. Overall project directory was new, conventionally used by Chinease developers.
+State management and custom checkout management handled. Also learned the approach to schedule
+and datetime management. Modular monolithic approaches in Frontend and Backend.
 
 ## Stack and takeaways
 
-Plain web front-end with WhatsApp deep links as the conversion layer, no
-server-side booking complexity needed. The lesson: for a service business,
-the goal isn't always a checkout — sometimes it's a well-formed conversation.
-Optimizing the handoff, not the form, was the highest-leverage work.
+Learned Django as a backend framework with all the backend conventions with Database structure. Cache
+management with Redis was a great experience knowing the scenarios. Also learned a lot about database partition.
+
+## Team Members
+
+- CTO - Ohidul Alam
+- FullStack Developer - MD. Ali Haider Doha

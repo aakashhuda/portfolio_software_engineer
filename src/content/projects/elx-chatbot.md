@@ -20,29 +20,39 @@ concern rather than an afterthought.
 
 ## What I worked on
 
-I worked on the product as part of the EchoLogyx engineering team,
-contributing to the customer-facing experience and the integrations that
-connect the chatbot to a store's live data.
+I worked on developing the Admin Panel for the Bot. Django was the primary backend and
+frontend for the panel. From this panel we could handle the chat sessions, schedule the bot and
+interfier conversations when necessary. It hold the company information and could control the UI
+of the chatbot integrated with any eCommerce.
+This project had three services running in a Microservice pattern. The other two parts are the
+model hosting with the store based trained with prompts and the actual frontend chatbox.
+
+- Custom updatable Cron Jobs from the Admin panel using Django Celery to schedule the ChatBot
+- Company and store timezone management. Scheduling based on the company timezone
+- Complete chat sessions management with interfiering and letting go
+- Asynchronus socket based connections managemment
+- Self closing chat sessions
+- Training data location management of scripts for store based products and ecommerce technologies like WooCommerce, Shopify etc
 
 ## Approach and challenges
 
-The interesting problems were integration and grounding. A chatbot is only
-as useful as the data it can reach, so syncing product catalogues, FAQs, and
-order status across four very different ecommerce platforms meant building a
-consistent abstraction over inconsistent APIs. Each platform has its own
-notion of products, inventory, and orders, and the chatbot had to present one
-coherent view to the shopper.
+The Admin panel is the middle point of the conversation in a real case schenario. So
+it was a challenge to maintain so the flow is never interupted by the admin panel as all
+services communicated with each other. For admin panel frontend components used tailwind
+css components from Flowbite.
 
-Conversational accuracy was the other axis. Recommending a product or
-reporting an order status that's subtly wrong is worse than not answering at
-all. That pushed toward deterministic, data-backed answers wherever possible,
-with the language model layered on top rather than left to improvise from
-memory.
+## Team Members
 
-## Stack and takeaways
+- AI Engineer - Jahin Akif
+- Frontend Chatbot Engineer - Ahnaf Tahmid
+- DevOps Engineer - Zuhair Mehtab
+- UI/UX Engineer - Nurul Amin
 
-A Next.js front-end (the marketing site and dashboard are React-based), with
-AI/NLP for understanding and platform integrations for Shopify, Adobe
-Commerce, WooCommerce, and BigCommerce. The lasting lesson: the hard part of
-an AI product isn't the model — it's giving the model trustworthy, current
-data to reason over.
+## Honourable Mentions
+
+They gave their 200% to pull off the project within time. Without them this
+wouldn't have been possible to finish
+
+- Abir Islam
+- MD. Zillur Rahman
+- MD. Farhan Osman
