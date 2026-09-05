@@ -6,6 +6,8 @@
 - Prefers interactive UI to be self-explanatory rather than annotated with instructional/status overlays — e.g., asked to remove a "Hover to pause"/"Paused" badge from the floating experience cards entirely. Confidence: 0.6
 - Prefers social/external link buttons to use their official brand colors (e.g., GitHub dark `#24292e`, LinkedIn brand blue `#0a66c2`) rather than the site's accent palette or bright non-brand accents — explicitly asked to undo a bright-green GitHub button and revert to the dark brand color. Confidence: 0.85
 
+- Prefers the tech-stack marquee section to be sticky and pinned to the top of the viewport once scrolled past (`position: sticky; top: 0`) so it stays visible rather than scrolling away with the page. Confidence: 0.6
+
 ## Motion & animation
 - Enjoys playful interactive motion beyond static reveals — e.g., cards drifting freely/randomly within a zone that pause on hover and resume when the mouse leaves. Confidence: 0.6
 - Prefers restrained, purposeful animation: skip sections that already have a good amount of animation rather than re-animating everything. Confidence: 0.7
