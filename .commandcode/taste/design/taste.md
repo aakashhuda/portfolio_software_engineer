@@ -5,12 +5,14 @@
 - Wants a brighter, more colorful UI: when the base palette reads as too muted, prefers adding color to enhance brightness rather than staying strictly neutral/desaturated. Confidence: 0.8
 - Prefers interactive UI to be self-explanatory rather than annotated with instructional/status overlays — e.g., asked to remove a "Hover to pause"/"Paused" badge from the floating experience cards entirely. Confidence: 0.6
 - Prefers social/external link buttons to use their official brand colors (e.g., GitHub dark `#24292e`, LinkedIn brand blue `#0a66c2`) rather than the site's accent palette or bright non-brand accents — explicitly asked to undo a bright-green GitHub button and revert to the dark brand color. Confidence: 0.85
+- Prefers informational metadata like card locations to be plain, non-clickable text rather than a link that routes anywhere. Confidence: 0.5
 
 - Prefers the tech-stack marquee section to be sticky and pinned to the top of the viewport once scrolled past (`position: sticky; top: 0`) so it stays visible rather than scrolling away with the page. Confidence: 0.6
 - Prefers dark-mode palettes to be soft, low-contrast, and easy on the eyes ("sweet") — muted hues like lavender and peach rather than harsh neon or muddy/neutral tones — while keeping the brutalist hard borders and offset shadows intact. Confidence: 0.8
 - Prefers light mode as the explicit default theme for all users, with no automatic dark mode from OS `prefers-color-scheme` — dark applies only when the visitor has explicitly chosen it. Confidence: 0.75
 - In dark mode, prefers borders and hard offset shadows to use a muted, low-contrast structural color (not near-white "flashy" ink) — separates border/shadow color from the brighter text ink so the brutalist edges sit back and stay easy on the eyes. Confidence: 0.75
 - Prefers the chosen theme to persist across client-side navigation rather than resetting to the default when routing between pages. Confidence: 0.6
+- On mobile, prefers the menu/hamburger toggle to sit on the far right of the header with the model/mode selector icon (e.g., theme toggle) immediately adjacent to its left. Confidence: 0.7
 
 ## Motion & animation
 - Enjoys playful interactive motion beyond static reveals — e.g., cards drifting freely/randomly within a zone that pause on hover and resume when the mouse leaves. Confidence: 0.6

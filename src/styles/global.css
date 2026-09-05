@@ -83,7 +83,8 @@
   --color-accent-soft: #2a2138;
   --color-signal: #ff9d76;
   --color-signal-soft: #33211f;
-  --color-line: #6b607c;
+  /* --color-line: #372e46; */
+  --color-line: #372e46;
   --color-success: #86d6a4;
   --color-success-soft: #17241c;
   --color-warning: #e0b06a;
@@ -935,17 +936,6 @@ a:hover {
   margin-bottom: var(--space-4);
 }
 
-.experience-item__location a {
-  color: var(--color-ink);
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 2px;
-}
-
-.experience-item__location a:hover {
-  color: var(--color-accent-strong);
-}
-
 .experience-item__focus {
   display: flex;
   flex-wrap: wrap;
@@ -1301,6 +1291,7 @@ a:hover {
     width: 100%;
     flex-direction: column;
     align-items: stretch;
+    order: 4;
   }
 
   .nav.is-open {
@@ -1309,6 +1300,12 @@ a:hover {
 
   .nav__toggle {
     display: inline-flex;
+    order: 3;
+  }
+
+  .theme-toggle {
+    order: 2;
+    margin-left: auto;
   }
 }
 

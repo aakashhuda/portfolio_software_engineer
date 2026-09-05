@@ -36,11 +36,7 @@ const {
 
   <div class="experience-item__details">
     <div class="experience-item__details-inner">
-      {location && (
-        <p class="experience-item__location">
-          {url ? <a href={url} target="_blank" rel="noopener">{location}</a> : location}
-        </p>
-      )}
+      {location && <p class="experience-item__location">{location}</p>}
 
       {focus.length > 0 && (
         <div class="experience-item__focus">

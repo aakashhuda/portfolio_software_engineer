@@ -36,7 +36,8 @@
       "Shell(node .commandcode/skills/impeccable/scripts/detect.mjs --json src/pages/index.astro src/scripts/experience-zone.js 2 >& 1)",
       "Shell(ls .commandcode/skills/impeccable/scripts/ 2>/dev/null; ls ~/.nvm/versions/node/v22.17.1/lib/node_modules/command-code/dist/bundled/agent-browser/SKILL.md 2>/dev/null)",
       "Shell(node .commandcode/skills/impeccable/scripts/detect.mjs --help 2 >& 1)",
-      "Shell(cat public/logo.svg 2>/dev/null; echo \"---FAVICON---\"; cat public/favicon.svg 2>/dev/null)"
+      "Shell(cat public/logo.svg 2>/dev/null; echo \"---FAVICON---\"; cat public/favicon.svg 2>/dev/null)",
+      "Shell(git log --all --oneline -- '**/*model*' '**/*Model*' 2>/dev/null | head -20; echo \"===grep model across all refs===\"; git grep -i -l \"model-select\\|modelSelector\\|model selector\" $(git rev-list --all) 2>/dev/null | head -20)"
     ],
     "deny": [],
     "defaultMode": "default"
