@@ -653,6 +653,9 @@ a:hover {
 /* ---------- Tech stack marquee ---------- */
 
 .tech-stack {
+  position: sticky;
+  top: 0;
+  z-index: 40;
   overflow: hidden;
   border-top: var(--border-thick) solid var(--color-ink);
   border-bottom: var(--border-thick) solid var(--color-ink);
