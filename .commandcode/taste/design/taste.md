@@ -7,6 +7,10 @@
 - Prefers social/external link buttons to use their official brand colors (e.g., GitHub dark `#24292e`, LinkedIn brand blue `#0a66c2`) rather than the site's accent palette or bright non-brand accents — explicitly asked to undo a bright-green GitHub button and revert to the dark brand color. Confidence: 0.85
 
 - Prefers the tech-stack marquee section to be sticky and pinned to the top of the viewport once scrolled past (`position: sticky; top: 0`) so it stays visible rather than scrolling away with the page. Confidence: 0.6
+- Prefers dark-mode palettes to be soft, low-contrast, and easy on the eyes ("sweet") — muted hues like lavender and peach rather than harsh neon or muddy/neutral tones — while keeping the brutalist hard borders and offset shadows intact. Confidence: 0.8
+- Prefers light mode as the explicit default theme for all users, with no automatic dark mode from OS `prefers-color-scheme` — dark applies only when the visitor has explicitly chosen it. Confidence: 0.75
+- In dark mode, prefers borders and hard offset shadows to use a muted, low-contrast structural color (not near-white "flashy" ink) — separates border/shadow color from the brighter text ink so the brutalist edges sit back and stay easy on the eyes. Confidence: 0.75
+- Prefers the chosen theme to persist across client-side navigation rather than resetting to the default when routing between pages. Confidence: 0.6
 
 ## Motion & animation
 - Enjoys playful interactive motion beyond static reveals — e.g., cards drifting freely/randomly within a zone that pause on hover and resume when the mouse leaves. Confidence: 0.6
@@ -24,5 +28,7 @@
 
 ## Consistency
 - New UI elements (logo, favicon, back buttons, etc.) must be designed to match the existing design system rather than introduced ad hoc. Confidence: 0.7
+- Prefers photos and other image assets to be edited/graded so they blend with the design system (e.g., recoloring a portrait to the site's palette as a deliberate duotone) rather than dropped in as-is, and is happy for the agent to modify the asset freely to achieve that fit. Confidence: 0.8
+sign system rather than introduced ad hoc. Confidence: 0.7
 - Prefers photos and other image assets to be edited/graded so they blend with the design system (e.g., recoloring a portrait to the site's palette as a deliberate duotone) rather than dropped in as-is, and is happy for the agent to modify the asset freely to achieve that fit. Confidence: 0.8
 ce: 0.8

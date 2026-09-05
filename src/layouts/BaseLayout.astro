@@ -30,6 +30,16 @@ const email = "syedmahbubulhuda@gmail.com";
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <script>
       document.documentElement.classList.add("js");
+
+      // Light is the default. Only a previously chosen dark theme overrides it.
+      // Applied before first paint to avoid a flash of the wrong theme.
+      (function () {
+        const stored = localStorage.getItem("theme");
+        document.documentElement.setAttribute(
+          "data-theme",
+          stored === "dark" ? "dark" : "light"
+        );
+      })();
     </script>
     <title>{title === siteTitle ? title : `${title} — ${siteTitle}`}</title>
     <slot name="head" />
@@ -67,6 +77,48 @@ const email = "syedmahbubulhuda@gmail.com";
           <a class="nav__link" href="/#experience">Experience</a>
           <a class="nav__link" href="/blog/">Blog</a>
         </nav>
+
+        <button
+          class="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+          title="Toggle dark mode"
+        >
+          <svg
+            class="theme-toggle__moon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg
+            class="theme-toggle__sun"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="M4.93 4.93l1.41 1.41"></path>
+            <path d="M17.66 17.66l1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="M6.34 17.66l-1.41 1.41"></path>
+            <path d="M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+        </button>
       </div>
     </header>
 
@@ -90,6 +142,28 @@ const email = "syedmahbubulhuda@gmail.com";
         toggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
         toggle.textContent = isOpen ? "Close" : "Menu";
       });
+
+      // Keep the chosen theme consistent across client-side navigations.
+      // The persisted header reuses the same button, so bind once and
+      // re-apply the saved theme on every page load.
+      function applySavedTheme() {
+        document.documentElement.setAttribute(
+          "data-theme",
+          localStorage.getItem("theme") === "dark" ? "dark" : "light"
+        );
+      }
+
+      const themeToggle = document.querySelector(".theme-toggle");
+
+      themeToggle?.addEventListener("click", () => {
+        const root = document.documentElement;
+        const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+      });
+
+      applySavedTheme();
+      document.addEventListener("astro:page-load", applySavedTheme);
 
       // Scroll reveal: activate elements as they enter the viewport,
       // falling back to "visible now" when IntersectionObserver is unavailable.

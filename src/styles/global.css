@@ -5,6 +5,8 @@
    ============================================================ */
 
 :root {
+  color-scheme: light;
+
   /* Palette */
   --color-bg: #fbf6ec;
   --color-surface: #fffdf6;
@@ -17,7 +19,9 @@
   --color-signal-soft: #ffe1cc;
   --color-line: #0e0e0e;
   --color-success: #3f7a4f;
+  --color-success-soft: #dceadc;
   --color-warning: #c96a1e;
+  --color-on-accent: #ffffff;
 
   /* Spacing scale */
   --space-1: 0.25rem;
@@ -50,9 +54,9 @@
   --border-thick: 3px;
 
   /* Hard offset shadows (earned by the brutalist brief) */
-  --shadow-sm: 4px 4px 0 0 var(--color-ink);
-  --shadow-md: 6px 6px 0 0 var(--color-ink);
-  --shadow-lg: 10px 10px 0 0 var(--color-ink);
+  --shadow-sm: 4px 4px 0 0 var(--color-line);
+  --shadow-md: 6px 6px 0 0 var(--color-line);
+  --shadow-lg: 10px 10px 0 0 var(--color-line);
   --shadow-accent: 6px 6px 0 0 var(--color-signal);
 
   /* Focus */
@@ -62,6 +66,33 @@
   /* Layout */
   --max-width: 72rem;
   --gutter: clamp(1rem, 4vw, 2.5rem);
+}
+
+/* Dark theme — same tokens, soft "dusk plum" palette instead of bright cream.
+   Muted lavender + peach on a deep plum canvas: sweet and easy on the eyes,
+   while the thick ink borders and hard offset shadows keep the brutalist bite. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #16121c;
+  --color-surface: #1e1826;
+  --color-ink: #efe7f2;
+  --color-muted: #b3a6bb;
+  --color-accent: #a78bfa;
+  --color-accent-strong: #c4b0ff;
+  --color-accent-soft: #2a2138;
+  --color-signal: #ff9d76;
+  --color-signal-soft: #33211f;
+  --color-line: #6b607c;
+  --color-success: #86d6a4;
+  --color-success-soft: #17241c;
+  --color-warning: #e0b06a;
+  --color-on-accent: #17121f;
+
+  --shadow-sm: 4px 4px 0 0 var(--color-line);
+  --shadow-md: 6px 6px 0 0 var(--color-line);
+  --shadow-lg: 10px 10px 0 0 var(--color-line);
+  --shadow-accent: 6px 6px 0 0 var(--color-signal);
 }
 
 *,
@@ -81,7 +112,7 @@ body {
   font-size: var(--text-base);
   line-height: 1.6;
   color: var(--color-ink);
-  background-color: var(--color-bg);
+  background-color: var(--color-surface);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -118,7 +149,7 @@ h2::after {
   bottom: 0;
   width: 100%;
   height: var(--border-thick);
-  background: var(--color-ink);
+  background: var(--color-line);
   transform-origin: left;
 }
 
@@ -172,7 +203,7 @@ a:hover {
   text-decoration: none;
   color: var(--color-ink);
   background: var(--color-surface);
-  border: var(--border-thick) solid var(--color-ink);
+  border: var(--border-thick) solid var(--color-line);
   box-shadow: var(--shadow-sm);
   transform: translateY(-150%);
   transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -238,7 +269,7 @@ a:hover {
   text-decoration: none;
   color: var(--color-ink);
   background: var(--color-surface);
-  border: var(--border-thick) solid var(--color-ink);
+  border: var(--border-thick) solid var(--color-line);
   box-shadow: var(--shadow-sm);
   cursor: pointer;
   position: relative;
@@ -251,13 +282,13 @@ a:hover {
 }
 
 .button:active {
-  box-shadow: 0 0 0 0 var(--color-ink);
+  box-shadow: 0 0 0 0 var(--color-line);
   transform: translate(4px, 4px);
 }
 
 .button--accent {
   background: var(--color-accent);
-  color: #ffffff;
+  color: var(--color-on-accent);
 }
 
 .button--accent:hover {
@@ -293,7 +324,7 @@ a:hover {
   font-weight: 600;
   text-decoration: none;
   padding: var(--space-2) var(--space-3);
-  border: var(--border-thin) solid var(--color-ink);
+  border: var(--border-thin) solid var(--color-line);
   background: var(--color-surface);
   box-shadow: var(--shadow-sm);
   transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
@@ -317,7 +348,7 @@ a:hover {
 }
 
 .back-link:active {
-  box-shadow: 0 0 0 0 var(--color-ink);
+  box-shadow: 0 0 0 0 var(--color-line);
   transform: translate(4px, 4px);
 }
 
@@ -327,7 +358,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   background: var(--color-surface);
-  border: var(--border-thick) solid var(--color-ink);
+  border: var(--border-thick) solid var(--color-line);
   box-shadow: var(--shadow-sm);
   padding: var(--space-5);
   position: relative;
@@ -401,7 +432,7 @@ a:hover {
   line-height: 1;
   padding: var(--space-2) var(--space-3);
   background: var(--color-accent-soft);
-  border: var(--border-thin) solid var(--color-ink);
+  border: var(--border-thin) solid var(--color-line);
 }
 
 .tag--status {
@@ -410,7 +441,7 @@ a:hover {
 
 .tag--featured {
   background: var(--color-accent);
-  color: #ffffff;
+  color: var(--color-on-accent);
 }
 
 /* ---------- Links ---------- */
@@ -428,7 +459,7 @@ a:hover {
 /* ---------- Header / Nav ---------- */
 
 .site-header {
-  border-bottom: var(--border-thick) solid var(--color-ink);
+  border-bottom: var(--border-thick) solid var(--color-line);
   background: var(--color-surface);
 }
 
@@ -479,7 +510,7 @@ a:hover {
 }
 
 .nav__link:hover {
-  border-color: var(--color-ink);
+  border-color: var(--color-line);
   background: var(--color-accent-soft);
   color: var(--color-accent-strong);
 }
@@ -487,7 +518,7 @@ a:hover {
 .nav__toggle {
   display: none;
   background: var(--color-surface);
-  border: var(--border-thin) solid var(--color-ink);
+  border: var(--border-thin) solid var(--color-line);
   box-shadow: var(--shadow-sm);
   padding: var(--space-2) var(--space-3);
   cursor: pointer;
@@ -495,10 +526,62 @@ a:hover {
   font-size: var(--text-sm);
 }
 
+/* ---------- Theme toggle ---------- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 42px;
+  height: 42px;
+  flex: none;
+  padding: 0;
+  background: var(--color-surface);
+  border: var(--border-thin) solid var(--color-line);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+
+.theme-toggle:hover {
+  background: var(--color-accent-soft);
+  box-shadow: var(--shadow-md);
+  transform: translate(-2px, -2px);
+}
+
+.theme-toggle:active {
+  box-shadow: 0 0 0 0 var(--color-line);
+  transform: translate(4px, 4px);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-ink);
+}
+
+/* Icon visibility: moon in light mode, sun in dark mode. */
+.theme-toggle__moon {
+  display: block;
+}
+
+.theme-toggle__sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle__moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle__sun {
+  display: block;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
-  border-top: var(--border-thick) solid var(--color-ink);
+  border-top: var(--border-thick) solid var(--color-line);
   background: var(--color-surface);
   padding-block: var(--space-6);
   margin-top: var(--space-8);
@@ -549,7 +632,7 @@ a:hover {
   bottom: calc(-1 * var(--space-3));
   left: var(--space-3);
   background: var(--color-accent);
-  border: var(--border-thick) solid var(--color-ink);
+  border: var(--border-thick) solid var(--color-line);
   z-index: 0;
   transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -574,7 +657,7 @@ a:hover {
   display: block;
   width: 100%;
   height: auto;
-  border: var(--border-thick) solid var(--color-ink);
+  border: var(--border-thick) solid var(--color-line);
   box-shadow: var(--shadow-md);
   object-fit: cover;
   transition: box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -608,7 +691,7 @@ a:hover {
   text-transform: uppercase;
   color: var(--color-ink);
   background: var(--color-surface);
-  border: var(--border-thin) solid var(--color-ink);
+  border: var(--border-thin) solid var(--color-line);
   box-shadow: var(--shadow-sm);
   padding: var(--space-2) var(--space-3);
 }
@@ -618,7 +701,7 @@ a:hover {
   height: 0.55em;
   flex: none;
   background: var(--color-signal);
-  border: 2px solid var(--color-ink);
+  border: 2px solid var(--color-line);
 }
 
 .hero__name {
@@ -657,8 +740,8 @@ a:hover {
   top: 0;
   z-index: 40;
   overflow: hidden;
-  border-top: var(--border-thick) solid var(--color-ink);
-  border-bottom: var(--border-thick) solid var(--color-ink);
+  border-top: var(--border-thick) solid var(--color-line);
+  border-bottom: var(--border-thick) solid var(--color-line);
   background: var(--color-surface);
   padding-block: var(--space-4);
   white-space: nowrap;
@@ -714,7 +797,7 @@ a:hover {
   margin-left: calc(var(--space-5) + 0.5em);
   flex: none;
   background: var(--color-signal);
-  border: 2px solid var(--color-ink);
+  border: 2px solid var(--color-line);
   transform: rotate(45deg);
 }
 
@@ -737,7 +820,7 @@ a:hover {
 
 .experience-item {
   background: var(--color-surface);
-  border: var(--border-thin) solid var(--color-ink);
+  border: var(--border-thin) solid var(--color-line);
   box-shadow: var(--shadow-sm);
   position: relative;
   transition: transform 120ms ease, box-shadow 120ms ease;
@@ -875,7 +958,7 @@ a:hover {
 }
 
 .experience-item--success .experience-item__focus .tag {
-  background: #dceadc;
+  background: var(--color-success-soft);
 }
 
 .experience-item__highlights {
@@ -952,7 +1035,7 @@ a:hover {
   font-size: 0.9em;
   background: var(--color-accent-soft);
   padding: 0.1em 0.35em;
-  border: 1px solid var(--color-ink);
+  border: 1px solid var(--color-line);
 }
 
 .article pre {
@@ -960,7 +1043,7 @@ a:hover {
   color: var(--color-bg);
   padding: var(--space-5);
   overflow-x: auto;
-  border: var(--border-thin) solid var(--color-ink);
+  border: var(--border-thin) solid var(--color-line);
   box-shadow: var(--shadow-sm);
   margin-block: var(--space-5);
 }
@@ -983,7 +1066,7 @@ a:hover {
 .gallery figure {
   margin: 0;
   background: var(--color-surface);
-  border: var(--border-thin) solid var(--color-ink);
+  border: var(--border-thin) solid var(--color-line);
   box-shadow: var(--shadow-sm);
   padding: var(--space-3);
 }
@@ -992,7 +1075,7 @@ a:hover {
   display: block;
   width: 100%;
   height: auto;
-  border: var(--border-thin) solid var(--color-ink);
+  border: var(--border-thin) solid var(--color-line);
 }
 
 .gallery figcaption {
@@ -1006,7 +1089,7 @@ a:hover {
 
 .empty-state {
   background: var(--color-surface);
-  border: var(--border-thin) dashed var(--color-ink);
+  border: var(--border-thin) dashed var(--color-line);
   padding: var(--space-7);
   text-align: center;
   color: var(--color-muted);
@@ -1083,7 +1166,7 @@ a:hover {
   from {
     opacity: 0;
     transform: translate(6px, 6px);
-    box-shadow: 0 0 0 0 var(--color-ink);
+    box-shadow: 0 0 0 0 var(--color-line);
   }
   to {
     opacity: 1;
@@ -1186,9 +1269,9 @@ a:hover {
 
 @media (max-width: 640px) {
   :root {
-    --shadow-sm: 3px 3px 0 0 var(--color-ink);
-    --shadow-md: 4px 4px 0 0 var(--color-ink);
-    --shadow-lg: 6px 6px 0 0 var(--color-ink);
+    --shadow-sm: 3px 3px 0 0 var(--color-line);
+    --shadow-md: 4px 4px 0 0 var(--color-line);
+    --shadow-lg: 6px 6px 0 0 var(--color-line);
     --shadow-accent: 4px 4px 0 0 var(--color-signal);
   }
 
