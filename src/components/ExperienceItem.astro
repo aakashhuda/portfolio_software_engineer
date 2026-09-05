@@ -31,24 +31,28 @@ const {
       {url ? <a href={url} target="_blank" rel="noopener">{company}</a> : company}
       <span class="experience-item__sep" aria-hidden="true">·</span>
       {dates}
-      {location && (
-        <>
-          <span class="experience-item__sep" aria-hidden="true">·</span>
-          {location}
-        </>
-      )}
     </p>
   </div>
 
-  {focus.length > 0 && (
-    <div class="experience-item__focus">
-      {focus.map((item) => <span class="tag">{item}</span>)}
-    </div>
-  )}
+  <div class="experience-item__details">
+    <div class="experience-item__details-inner">
+      {location && (
+        <p class="experience-item__location">
+          {url ? <a href={url} target="_blank" rel="noopener">{location}</a> : location}
+        </p>
+      )}
 
-  {highlights.length > 0 && (
-    <ul class="experience-item__highlights">
-      {highlights.map((highlight) => <li>{highlight}</li>)}
-    </ul>
-  )}
+      {focus.length > 0 && (
+        <div class="experience-item__focus">
+          {focus.map((item) => <span class="tag">{item}</span>)}
+        </div>
+      )}
+
+      {highlights.length > 0 && (
+        <ul class="experience-item__highlights">
+          {highlights.map((highlight) => <li>{highlight}</li>)}
+        </ul>
+      )}
+    </div>
+  </div>
 </article>

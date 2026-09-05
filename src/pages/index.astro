@@ -149,6 +149,47 @@ const experience = [
     </div>
   </section>
 
+  <section class="tech-stack" aria-label="Technologies">
+    <div class="tech-stack__track" aria-hidden="true">
+      <div class="tech-stack__group">
+        {
+          [
+            "Python",
+            "Django",
+            "Django Rest Framework",
+            "Vue",
+            "PostgreSQL",
+            "Redis",
+            "Tailwind",
+            "Shopify",
+            "Vanilla JS",
+            "HTML",
+            "CSS",
+            "Bootstrap",
+          ].map((tech) => <span class="tech-stack__item">{tech}</span>)
+        }
+      </div>
+      <div class="tech-stack__group">
+        {
+          [
+            "Python",
+            "Django",
+            "Django Rest Framework",
+            "Vue",
+            "PostgreSQL",
+            "Redis",
+            "Tailwind",
+            "Shopify",
+            "Vanilla JS",
+            "HTML",
+            "CSS",
+            "Bootstrap",
+          ].map((tech) => <span class="tech-stack__item">{tech}</span>)
+        }
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="projects">
     <div class="site-shell">
       <h2 class="reveal reveal--line">Projects</h2>
@@ -171,10 +212,10 @@ const experience = [
   <section class="section" id="experience">
     <div class="site-shell stack">
       <h2 class="reveal reveal--line">Experience</h2>
-      <div class="experience-zone reveal reveal--frame" data-experience-zone>
+      <div class="experience-zone reveal reveal--frame">
         {
           experience.map((item, index) => (
-            <div class="experience-float">
+            <div class="experience-float" style={`--i: ${index}`}>
               <ExperienceItem {...item} index={index} />
             </div>
           ))
@@ -182,37 +223,64 @@ const experience = [
       </div>
     </div>
   </section>
-
-  <script>
-    import "../scripts/experience-zone.js";
-  </script>
 </BaseLayout>
 
 <style>
   .experience-zone {
-    position: relative;
     background: var(--color-accent-soft);
     border: var(--border-thick) solid var(--color-ink);
     box-shadow: var(--shadow-sm);
-    padding: var(--space-5);
+    padding: var(--space-7);
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+
+    gap: var(--space-7);
   }
 
   .experience-float {
-    position: static;
+    position: relative;
+
+    animation: experience-drift 12s ease-in-out infinite alternate;
+    animation-delay: calc(var(--i, 0) * -3s);
   }
 
-  .experience-float + .experience-float {
-    margin-top: var(--space-5);
+  .experience-float:nth-child(3n + 1) {
+    animation-duration: 14s;
   }
 
-  .experience-zone.is-active {
-    padding: 0;
+  .experience-float:nth-child(3n + 2) {
+    animation-duration: 16s;
   }
 
-  .experience-zone.is-active .experience-float {
-    position: absolute;
-    width: 19rem;
-    margin-top: 0;
-    will-change: transform;
+  .experience-float:nth-child(3n) {
+    animation-duration: 13s;
+  }
+
+  .experience-float:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes experience-drift {
+    0% {
+      left: 0;
+      top: 0;
+    }
+
+    50% {
+      left: 22px;
+      top: -16px;
+    }
+
+    100% {
+      left: -18px;
+      top: 16px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .experience-float {
+      animation: none;
+    }
   }
 </style>
